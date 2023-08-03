@@ -1,13 +1,11 @@
-package com.MUKSSeventweb.Eventweb;
+package com.ManchesterInside.ManchesterInside;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EventwebApplication {
-
+public class ManchesterInside {
 	public static void main(String[] args) {
-		SpringApplication.run(EventwebApplication.class, args);
+		SpringApplication.run(ManchesterInside.class, args);
 	}
-
 }
