@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.config;
+package com.mukss.eventweb.config;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -26,7 +26,7 @@ public class Persistence {
 	private final static Logger log = LoggerFactory.getLogger(Persistence.class);
 
 	// Persistence objects.
-	private final static String PACKAGES = "com.ManchesterInside.ManchesterInside.entities";
+	private final static String PACKAGES = "com.mukss.eventweb.entities";
 
 	// Connection properties.
 	private final static Path DB_PATH = Paths.get(System.getProperty("user.dir"), "db", "manchester-inside-dev");

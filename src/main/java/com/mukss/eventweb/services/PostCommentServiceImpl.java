@@ -1,12 +1,12 @@
-package com.ManchesterInside.ManchesterInside.services;
+package com.mukss.eventweb.services;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ManchesterInside.ManchesterInside.entities.PostComment;
-import com.ManchesterInside.ManchesterInside.repositories.PostCommentRepository;
+import com.mukss.eventweb.entities.PostComment;
+import com.mukss.eventweb.repositories.PostCommentRepository;
 
 @Service
 public class PostCommentServiceImpl implements PostCommentService {

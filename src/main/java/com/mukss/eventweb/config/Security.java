@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.config;
+package com.mukss.eventweb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
-import com.ManchesterInside.ManchesterInside.config.userdetails.UserDetailsServiceImpl;
+import com.mukss.eventweb.config.userdetails.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity

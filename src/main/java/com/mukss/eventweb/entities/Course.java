@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.entities;
+package com.mukss.eventweb.entities;
 
 import java.time.LocalDateTime;
 

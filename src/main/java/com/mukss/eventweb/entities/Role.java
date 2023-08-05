@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.entities;
+package com.mukss.eventweb.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

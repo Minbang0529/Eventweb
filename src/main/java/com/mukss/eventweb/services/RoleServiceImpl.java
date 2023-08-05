@@ -1,10 +1,10 @@
-package com.ManchesterInside.ManchesterInside.services;
+package com.mukss.eventweb.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ManchesterInside.ManchesterInside.entities.Role;
-import com.ManchesterInside.ManchesterInside.repositories.RoleRepository;
+import com.mukss.eventweb.entities.Role;
+import com.mukss.eventweb.repositories.RoleRepository;
 
 @Service
 public class RoleServiceImpl implements RoleService {

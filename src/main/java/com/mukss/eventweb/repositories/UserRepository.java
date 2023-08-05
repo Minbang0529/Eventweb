@@ -1,10 +1,10 @@
-package com.ManchesterInside.ManchesterInside.repositories;
+package com.mukss.eventweb.repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ManchesterInside.ManchesterInside.entities.User;
+import com.mukss.eventweb.entities.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
     public Optional<User> findByuserName(String userName);

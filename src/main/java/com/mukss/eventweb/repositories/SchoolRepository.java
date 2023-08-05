@@ -1,8 +1,8 @@
-package com.ManchesterInside.ManchesterInside.repositories;
+package com.mukss.eventweb.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ManchesterInside.ManchesterInside.entities.School;
+import com.mukss.eventweb.entities.School;
 
 public interface SchoolRepository extends CrudRepository<School, Long> {
 

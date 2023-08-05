@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.config.userdetails;
+package com.mukss.eventweb.config.userdetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,8 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.ManchesterInside.ManchesterInside.entities.Role;
-import com.ManchesterInside.ManchesterInside.entities.User;
+import com.mukss.eventweb.entities.Role;
+import com.mukss.eventweb.entities.User;
 
 public class CustomUserDetails implements UserDetails {
 

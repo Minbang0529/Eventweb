@@ -1,12 +1,12 @@
-package com.ManchesterInside.ManchesterInside.config.userdetails;
+package com.mukss.eventweb.config.userdetails;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.ManchesterInside.ManchesterInside.entities.User;
-import com.ManchesterInside.ManchesterInside.repositories.UserRepository;
+import com.mukss.eventweb.entities.User;
+import com.mukss.eventweb.repositories.UserRepository;
 
 public class UserDetailsServiceImpl implements UserDetailsService {
 	

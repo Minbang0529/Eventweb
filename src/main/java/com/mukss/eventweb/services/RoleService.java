@@ -1,6 +1,6 @@
-package com.ManchesterInside.ManchesterInside.services;
+package com.mukss.eventweb.services;
 
-import com.ManchesterInside.ManchesterInside.entities.Role;
+import com.mukss.eventweb.entities.Role;
 
 public interface RoleService {
 	public long count();

@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.config.initialLoader;
+package com.mukss.eventweb.config.initialLoader;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -14,12 +14,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.ManchesterInside.ManchesterInside.entities.Role;
-import com.ManchesterInside.ManchesterInside.entities.User;
-import com.ManchesterInside.ManchesterInside.services.RoleService;
-import com.ManchesterInside.ManchesterInside.services.UserService;
-import com.ManchesterInside.ManchesterInside.entities.Post;
-import com.ManchesterInside.ManchesterInside.services.PostService;
+import com.mukss.eventweb.entities.Post;
+import com.mukss.eventweb.entities.Role;
+import com.mukss.eventweb.entities.User;
+import com.mukss.eventweb.services.PostService;
+import com.mukss.eventweb.services.RoleService;
+import com.mukss.eventweb.services.UserService;
 @Configuration
 @Profile("default")
 public class InitialDataLoader {

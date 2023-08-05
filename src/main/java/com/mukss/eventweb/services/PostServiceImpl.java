@@ -1,12 +1,12 @@
-package com.ManchesterInside.ManchesterInside.services;
+package com.mukss.eventweb.services;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ManchesterInside.ManchesterInside.entities.Post;
-import com.ManchesterInside.ManchesterInside.repositories.PostRepository;
+import com.mukss.eventweb.entities.Post;
+import com.mukss.eventweb.repositories.PostRepository;
 
 @Service
 public class PostServiceImpl implements PostService {

@@ -1,8 +1,8 @@
-package com.ManchesterInside.ManchesterInside.repositories;
+package com.mukss.eventweb.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ManchesterInside.ManchesterInside.entities.Role;
+import com.mukss.eventweb.entities.Role;
 
 public interface RoleRepository extends CrudRepository<Role, Long> {
 

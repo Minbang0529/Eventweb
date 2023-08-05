@@ -1,8 +1,8 @@
-package com.ManchesterInside.ManchesterInside.repositories;
+package com.mukss.eventweb.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ManchesterInside.ManchesterInside.entities.Post;
+import com.mukss.eventweb.entities.Post;
 
 public interface PostRepository extends CrudRepository<Post, Long> {
 	// orders post by descending order of uploaded date

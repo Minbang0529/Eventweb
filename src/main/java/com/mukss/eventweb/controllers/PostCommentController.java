@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.controllers;
+package com.mukss.eventweb.controllers;
 
 import java.time.LocalDateTime;
 
@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ManchesterInside.ManchesterInside.config.userdetails.CustomUserDetails;
-import com.ManchesterInside.ManchesterInside.entities.Post;
-import com.ManchesterInside.ManchesterInside.entities.PostComment;
-import com.ManchesterInside.ManchesterInside.entities.User;
-import com.ManchesterInside.ManchesterInside.exceptions.PostNotFoundException;
-import com.ManchesterInside.ManchesterInside.services.PostCommentService;
-import com.ManchesterInside.ManchesterInside.services.PostService;
+import com.mukss.eventweb.config.userdetails.CustomUserDetails;
+import com.mukss.eventweb.entities.Post;
+import com.mukss.eventweb.entities.PostComment;
+import com.mukss.eventweb.entities.User;
+import com.mukss.eventweb.exceptions.PostNotFoundException;
+import com.mukss.eventweb.services.PostCommentService;
+import com.mukss.eventweb.services.PostService;
 
 @Controller
 @RequestMapping(value = "/comments", produces = MediaType.TEXT_HTML_VALUE)

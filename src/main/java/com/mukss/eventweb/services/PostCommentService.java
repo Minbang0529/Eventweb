@@ -1,8 +1,8 @@
-package com.ManchesterInside.ManchesterInside.services;
+package com.mukss.eventweb.services;
 
 import java.util.Optional;
 
-import com.ManchesterInside.ManchesterInside.entities.PostComment;
+import com.mukss.eventweb.entities.PostComment;
 
 public interface PostCommentService {
 	

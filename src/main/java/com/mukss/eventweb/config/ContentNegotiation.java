@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.config;
+package com.mukss.eventweb.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

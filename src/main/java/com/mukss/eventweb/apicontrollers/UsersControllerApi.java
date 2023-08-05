@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.apicontrollers;
+package com.mukss.eventweb.apicontrollers;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -15,11 +15,12 @@ import org.springframework.http.ResponseEntity;
 
 import javax.validation.Valid;
 
-import com.ManchesterInside.ManchesterInside.assemblers.UserModelAssembler;
-import com.ManchesterInside.ManchesterInside.entities.User;
-import com.ManchesterInside.ManchesterInside.services.UserService;
-
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mukss.eventweb.assemblers.UserModelAssembler;
+import com.mukss.eventweb.entities.User;
+import com.mukss.eventweb.services.UserService;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;

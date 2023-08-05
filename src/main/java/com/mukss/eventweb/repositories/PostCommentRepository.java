@@ -1,8 +1,8 @@
-package com.ManchesterInside.ManchesterInside.repositories;
+package com.mukss.eventweb.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.ManchesterInside.ManchesterInside.entities.PostComment;
+import com.mukss.eventweb.entities.PostComment;
 
 public interface PostCommentRepository extends CrudRepository<PostComment, Long> {
 

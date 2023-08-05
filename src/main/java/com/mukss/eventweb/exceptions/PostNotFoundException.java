@@ -1,4 +1,4 @@
-package com.ManchesterInside.ManchesterInside.exceptions;
+package com.mukss.eventweb.exceptions;
 
 public class PostNotFoundException extends RuntimeException{
 	
