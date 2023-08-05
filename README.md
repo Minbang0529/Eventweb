@@ -1,8 +1,3 @@
-# Read Me First
-The following was discovered as part of building this project:
-
-* The original package name 'com.ManchesterInside.Manchester-Inside' is invalid and this project uses 'com.ManchesterInside.ManchesterInside' instead.
-
 # Getting Started
 
 ### Reference Documentation
