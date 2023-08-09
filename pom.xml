@@ -181,7 +181,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.baeldung.demo.DemoApplication</mainClass>
+					<mainClass>com.mukss.eventweb.Eventweb</mainClass>
 					<layout>JAR</layout>
 				</configuration>
 				<executions>
