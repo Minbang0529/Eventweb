@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<start-class>com.baeldung.demo.DemoApplication</start-class>
+		<start-class>com.mukss.eventweb.Eventweb</start-class>
 	</properties>
 	
 	<dependencies>
