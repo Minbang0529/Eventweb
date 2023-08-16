@@ -1,7 +1,10 @@
+body {
+  background-color: rgb(245, 242, 248);
+}
 img.logo {
     display: block;
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     border-radius: 50px;
     float: left;
     margin-right: 0px;
@@ -14,14 +17,14 @@ img.logo {
   }
 
   p {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     color: #3c4257
   }
 
   p.mukss {
-    margin-left: 50px;
-    margin-top: 8px;
-    font-size: 26px;
+    margin-left: 70px;
+    margin-top: 10px;
+    font-size: 30px;
     font-weight: bold;
     color: #3c4257;
   }
@@ -60,7 +63,8 @@ img.logo {
   }
 
   p.introduction {
-    margin-left: 10px
+    margin-left: 10px;
+    line-height: 2;
   }
 
   p.title {
@@ -68,6 +72,9 @@ img.logo {
     font-weight: bold;
     font-size: 50px;
     color: rgb(126, 28, 191);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2),
+               2px 2px 4px rgba(0, 0, 0, 0.2),
+               3px 3px 6px rgba(0, 0, 0, 0.2);
   }
 
   p.mypage {
@@ -246,4 +253,25 @@ img.logo {
 
 .error-margin {
   margin-top: 0px; /* Adjust this value as needed */
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120;
+}
+
+.login {
+  width: 100%;
+  max-width: 400px;
+}
+
+.centre {
+  width: 100%;
+}
+
+.coloured-button {
+  padding: 10px 20px;
+  cursor: pointer;
 }
