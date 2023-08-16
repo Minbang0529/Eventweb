@@ -48,7 +48,7 @@ public class EventsController {
 	// Returns all events as a list, under attribute "posts" of model
 	@GetMapping
 	public String getEvents(Model model) {
-		model.addAttribute("posts", eventService.findAll());
+		model.addAttribute("events", eventService.findAll());
 		return "events/index";
 	}
 	
@@ -83,7 +83,7 @@ public class EventsController {
 		
 		if (errors.hasErrors()) {
 			model.addAttribute("event", event);
-			return "/events/new";
+			return "events/new";
 		}
 		
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -91,7 +91,7 @@ public class EventsController {
 		if (principal instanceof CustomUserDetails) {
 			user = ((CustomUserDetails)principal).getUser();
 		} 		
-		
+		event.setUser(user);
 		event.setTimeUploaded(LocalDateTime.now());
 		
 		// save post after automatically adding relevant meta info
