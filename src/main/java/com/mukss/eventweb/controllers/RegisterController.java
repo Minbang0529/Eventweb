@@ -25,7 +25,6 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mukss.eventweb.config.userdetails.CustomUserDetails;
-import com.mukss.eventweb.entities.Post;
 import com.mukss.eventweb.entities.Role;
 import com.mukss.eventweb.entities.User;
 import com.mukss.eventweb.services.RoleService;

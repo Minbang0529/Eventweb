@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{layouts/default}">
 <head>
-  <title>New Post</title>
+  <title>New Event</title>
 </head>
 <body>
   <div layout:fragment="content">
-    <h1>Add a new Post</h1>
+    <h1>Add a new Event</h1>
     
-    <form action="#" th:action="@{/posts/new}" th:object="${post}" method="post">
+    <form action="#" th:action="@{/events/new}" th:object="${event}" method="post">
       <div class="form-group mb-3">
      	<!-- Hidden form that stores id -->
       	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
@@ -24,7 +24,7 @@
       </div>
       
       <button class="btn btn-primary" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
-      <a class="btn btn-warning" role="button" href="/posts"><i class="fas fa-ban" aria-hidden="true"></i> Cancel</a>
+      <a class="btn btn-warning" role="button" href="/events"><i class="fas fa-ban" aria-hidden="true"></i> Cancel</a>
     </form>
   </div>
 </body>
