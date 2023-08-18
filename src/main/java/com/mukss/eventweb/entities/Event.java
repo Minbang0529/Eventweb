@@ -38,6 +38,8 @@ public class Event {
 	
 	private String location;
 	
+	private Integer fee;
+	
 	public User getUser() {
 		return user;
 	}
@@ -84,6 +86,14 @@ public class Event {
 	
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	
+	public Integer getFee() {
+		return fee;
+	}
+	
+	public void setFee(Integer fee) {
+		this.fee = fee;
 	}
 	
 }
