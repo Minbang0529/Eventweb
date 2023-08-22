@@ -43,6 +43,7 @@ public class User {
 	@NotEmpty(message = "Please enter your email.")
 	private String email;
 	
+	
 	private boolean enabled;
 	
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
@@ -103,6 +104,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 
 	public boolean isEnabled() {
 		return enabled;

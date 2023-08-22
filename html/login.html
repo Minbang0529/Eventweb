@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>MUKSS</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      window.onload = function () {
+        var errorMessage1 = document.getElementById("error-message1");
+        var errorMessage2 = document.getElementById("error-message2");
+        var userNameInput = document.getElementById("userNameInput");
+        var passwordInput = document.getElementById("passwordInput");
+        var signUpButton = document.getElementById("signUpButton");
+        var ContinueButton = document.getElementById("ContinueButton");
+        var password = document.getElementById("password");
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("error") === "1") {
+          errorMessage1.textContent =
+            "The username you entered isn't connected to an account.";
+          userNameInput.classList.add("error-input");
+          password.style.marginTop = "10px";
+          signUpButton.style.marginTop = "4px";
+          ContinueButton.style.marginTop = "36px";
+        } else if (urlParams.get("error") === "2") {
+          errorMessage2.textContent =
+            "The password you entered doesn't match the account.";
+          passwordInput.classList.add("error-input");
+          signUpButton.style.marginTop = "4px";
+          ContinueButton.style.marginTop = "16px";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <div class="top_bar">
+      <div class="left-section">
+        <a href="http://127.0.0.1:5500/main.html">
+          <img class="logo" src="images/mukss_logo.jpg" alt="image" />
+        </a>
+        <a href="http://127.0.0.1:5500/login.html">
+          <p class="mukss">MUKSS</p></a
+        >
+        <a href="http://127.0.0.1:5500/mypage.html"> </a>
+      </div>
+      <div class="middle-section"></div>
+      <div class="right-section">
+        <a href="http://127.0.0.1:5500/mypage.html">
+          <div class="mypage">
+            <p class="mypage">My Page</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="introduction">
+        <p class="title">MUKSS</p>
+        <p class="introduction">
+          MUKSS is a non-profit organisation, providing all Korean students in
+          Manchester with various types of welfare benefits. To give full
+          constructive support to students studying abroad in Manchester, MUKSS
+          creates the best environment for students to communicate and expand
+          personal networks through academic and cultural events. Furthermore,
+          MUKSS attempts to play an active role in cultural exchanges among
+          international students, while concentrating on spreading Korean
+          culture.
+        </p>
+      </div>
+      <div class="login">
+        <form action="/authenticate" method="post">
+          <div class="loginin">
+            <p class="signin">Sign in to your account</p>
+
+            <div class="centre">
+              <p class="userName">Username</p>
+              <p class="input">
+                <input id="userNameInput" type="userName" name="userName" />
+              </p>
+              <p id="error-message1" class="error-message"></p>
+              <p id="password" class="password">Password</p>
+              <p class="input">
+                <input id="passwordInput" type="password" name="password" />
+              </p>
+              <p id="error-message2" class="error-message"></p>
+              <button id="ContinueButton" class="coloured-button" type="submit">
+                Continue
+              </button>
+              <p>
+                <button id="signUpButton">
+                  <a href="sign-up.html">Sign up</a>
+                </button>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
