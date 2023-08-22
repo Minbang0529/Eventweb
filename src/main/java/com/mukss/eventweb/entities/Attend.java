@@ -29,7 +29,7 @@ public class Attend {
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDateTime lastEdited;
 	
-	private String comment;
+	private String bankName;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="event_id", nullable=false)
@@ -62,12 +62,12 @@ public class Attend {
 		this.lastEdited = lastEdited;
 	}
 
-	public String getComment() {
-		return comment;
+	public String getBankName() {
+		return bankName;
 	}
 
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
 	}
 
 	public Event getEvent() {
