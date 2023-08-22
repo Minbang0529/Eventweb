@@ -10,29 +10,48 @@
 		<p>This is where event details should appear.</p>
 		<hr>
 		
-		
 		<h1><i class="fas fa-bolt"></i> Title</h1>
-		<p style="width: 80%; word-wrap: break-word;" class="", th:text="${{event.title}}">Event TITLE</p>
+		<p style="width: 80%; word-wrap: break-word;" th:text="${event.title}">Event TITLE</p>
 		<hr>
 		
 		<h1><i class="fas fa-calendar"></i> Author</h1>
-		<p th:text="${{event.user.userName}}">Author Username</p>
+		<p th:text="${event.user.userName}">Author Username</p>
 		<hr>
 		  
 		<h1><i class="fas fa-calendar"></i> Content</h1>
-		<p th:text="${{event.content}}">event Content</p>
+		<p th:text="${event.content}">event Content</p>
 		<hr>
-		
+
+		<!-- Attend Form -->
+		<h1><i class="fas fa-user-plus"></i> Attend Event</h1>
+		<form th:action="@{/attends/{id}(id=${event.id})}" method="post">
+			<label for="comment">Comment:</label>
+			<textarea id="comment" name="comment" required></textarea><br>
+			<button type="submit" class="btn btn-success mb-2">Attend</button>
+		</form>
+		<hr>
+
+		<!-- Attendees List (if needed) -->
+		<h2>Attends</h2>
+		<ul>
+			<!-- This part should repeat for each attendance. -->
+			<li th:each="attend : ${attends}">
+				<span th:text="${attend.comment}">Attend Comment</span>
+				<form th:action="@{/attends/{id}(id=${attend.id})}" th:method="delete">
+					<button type="submit" class="btn btn-danger mb-2">Delete</button>
+				</form>
+			</li>
+		</ul>
+		<hr>
+
 		<!-- Update form button -->
 		<form th:action="@{/events/update/{num}(num=${event.id})}" th:method="get">
-             <button type="submit" class="btn btn-info mb-2"> Update</button>
-        </form>
-        <!-- Delete event button -->
-        <form th:action="@{/events/{num}(num=${event.id})}" th:method="delete">
-      		<button type="submit" class="btn btn-danger mb-2"><i class="fas fa-trash" aria-hidden="true"></i> Delete event</button>
-   		</form>
-		
-		    
+			<button type="submit" class="btn btn-info mb-2">Update</button>
+		</form>
+		<!-- Delete event button -->
+		<form th:action="@{/events/{num}(num=${event.id})}" th:method="delete">
+			<button type="submit" class="btn btn-danger mb-2"><i class="fas fa-trash" aria-hidden="true"></i> Delete event</button>
+		</form>
 		<a class="btn btn-primary mb-2" role="button" href="/events"><i class="fas fa-home" aria-hidden="true"></i> Back to list</a>
 	</div>  
 </body>
