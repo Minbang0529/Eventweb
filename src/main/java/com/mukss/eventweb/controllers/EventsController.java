@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -81,7 +82,7 @@ public class EventsController {
 	}
 	
 	@PostMapping(value = "/new", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public String createEvent(@RequestBody @Valid @ModelAttribute Event event, BindingResult errors,
+	public String createEvent(@RequestParam("imgFile") MultipartFile imgFile, @RequestBody @Valid @ModelAttribute Event event, BindingResult errors,
 			Model model, RedirectAttributes redirectAttrs) {
 		
 		if (errors.hasErrors()) {
@@ -96,6 +97,8 @@ public class EventsController {
 		} 		
 		event.setUser(user);
 		event.setTimeUploaded(LocalDateTime.now());
+		
+		eventService.saveImg(imgFile);
 		
 		// save post after automatically adding relevant meta info
 		eventService.save(event);

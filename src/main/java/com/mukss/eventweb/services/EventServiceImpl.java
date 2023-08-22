@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mukss.eventweb.entities.Event;
 import com.mukss.eventweb.repositories.EventRepository;
@@ -32,6 +33,11 @@ public class EventServiceImpl implements EventService{
 	@Override
 	public Event save(Event event) {
 		return eventRepository.save(event);
+	}
+	
+	@Override
+	public Event saveImg(MultipartFile imgFile) {
+		return eventRepository.saveImg(imgFile);
 	}
 	
 	@Override
