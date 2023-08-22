@@ -8,7 +8,7 @@
   <div layout:fragment="content">
     <h1>Add a new Event</h1>
     
-    <form action="#" th:action="@{/events/new}" th:object="${event}" method="post">
+    <form action="#" th:action="@{/events/new}" th:object="${event}" method="post" enctype="multipart/form-data">
       <div class="form-group mb-3">
      	<!-- Hidden form that stores id -->
       	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />

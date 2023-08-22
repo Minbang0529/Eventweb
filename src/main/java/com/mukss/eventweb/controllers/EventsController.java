@@ -36,6 +36,9 @@ public class EventsController {
 	@Autowired
 	private EventService eventService;
 	
+	private String imgName;
+	private String imgPath;
+	
 	// TODO: Add not_found error
 	@ExceptionHandler(EventNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
