@@ -21,28 +21,42 @@
 		<h1><i class="fas fa-calendar"></i> Content</h1>
 		<p th:text="${event.content}">event Content</p>
 		<hr>
+		
+		<h3>Attend</h3>
+		<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Author</th>
+				<th>UploadTime</th>
+				<th>Content</th>
+			
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c : ${event.attends}">
+				<td th:text="${{c.user.userName}}">Comment author here</td>
+				<td th:text="${{c.timeUploaded}}">12.25</td>
+				<td th:text="${{c.bankName}}">Comment content here</td>
+				
+			</tr>
+			</tbody>
+		</table>
 
 		<!-- Attend Form -->
 		<h1><i class="fas fa-user-plus"></i> Attend Event</h1>
-		<form th:action="@{/attends/{id}(id=${event.id})}" method="post">
-			<label for="comment">Comment:</label>
-			<textarea id="comment" name="comment" required></textarea><br>
-			<button type="submit" class="btn btn-success mb-2">Attend</button>
-		</form>
-		<hr>
-
-		<!-- Attendees List (if needed) -->
-		<h2>Attends</h2>
-		<ul>
-			<!-- This part should repeat for each attendance. -->
-			<li th:each="attend : ${attends}">
-				<span th:text="${attend.comment}">Attend Comment</span>
-				<form th:action="@{/attends/{id}(id=${attend.id})}" th:method="delete">
-					<button type="submit" class="btn btn-danger mb-2">Delete</button>
-				</form>
-			</li>
-		</ul>
-		<hr>
+		
+		<form action="#" th:action="@{/attends/{id}(id=${event.id})}" th:object="${eattend}" method="post">
+      	<div class="form-group">
+      	<!-- Hidden form that stores id -->
+      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
+	        <label for="name">Bank Name:</label>
+	        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter bankName..." autofocus="autofocus" />
+	        <p class="text-danger" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">errors</p>
+      	</div>
+      
+      	<button class="btn btn-primary mb-2" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
+    	</form>
+		
 
 		<!-- Update form button -->
 		<form th:action="@{/events/update/{num}(num=${event.id})}" th:method="get">

@@ -1,7 +1,9 @@
 package com.mukss.eventweb.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -39,6 +42,10 @@ public class Event {
 	private String location;
 	
 	private Integer fee;
+	
+	@OneToMany(mappedBy="event", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	private List<Attend> attends;
+
 	
 	public User getUser() {
 		return user;
@@ -94,6 +101,16 @@ public class Event {
 	
 	public void setFee(Integer fee) {
 		this.fee = fee;
+	}
+	
+	public List<Attend> getAttends(){
+		return attends;
+	}
+	
+
+	
+	public void addAttend(Attend attend) {
+		this.attends.add(attend);
 	}
 	
 }

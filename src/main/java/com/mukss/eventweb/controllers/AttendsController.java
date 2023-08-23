@@ -37,26 +37,17 @@ public class AttendsController {
 	@Autowired
 	private AttendService attendService;
 
-	// Adding new attend
-	@GetMapping("/new")
-	public String newAttend(Model model) {
-		// if model does not have attend, initialize a new attend
-		if (!model.containsAttribute("attend")) {
-			model.addAttribute("attend", new Attend());
-		}
-		return "attends/new";
-	}
 
 	/*
 	 * add new attend with comment via contents of form (form should pass ? object)
 	 */
 	@PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public String createAttend(@RequestBody @Valid @ModelAttribute Attend attend, BindingResult errors,
+	public String addAttend(@RequestBody @Valid @ModelAttribute Attend eattend, BindingResult errors,
 			@PathVariable("id") long id, Model model, RedirectAttributes redirectAttrs) {
 
 		// return to original url if error
 		if (errors.hasErrors()) {
-			model.addAttribute("attend", attend);
+			model.addAttribute("eattend", eattend);
 			return "/events/" + id;
 		}
 		// set author info and time info here
@@ -70,14 +61,14 @@ public class AttendsController {
 		Event event = eventService.findById(id).orElseThrow(() -> new EventNotFoundException(id));
 
 		// TODO: Handle if there is no user logged in.
-		if (!model.containsAttribute("attend")) {
-			model.addAttribute("attend", new Attend());
+		if (!model.containsAttribute("eattend")) {
+			model.addAttribute("eattend", new Attend());
 		}
-		attend.setUser(user);
-		attend.setTimeUploaded(LocalDateTime.now());
-		attend.setLastEdited(LocalDateTime.now());
-		attend.setEvent(event);
-		attendService.save(attend);
+		eattend.setUser(user);
+		eattend.setTimeUploaded(LocalDateTime.now());
+		eattend.setLastEdited(LocalDateTime.now());
+		eattend.setEvent(event);
+		attendService.save(eattend);
 		redirectAttrs.addFlashAttribute("ok_message", "New attend added.");
 
 		// return to original url upon saving
