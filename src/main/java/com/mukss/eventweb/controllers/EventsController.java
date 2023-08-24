@@ -24,6 +24,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.mukss.eventweb.config.userdetails.CustomUserDetails;
+import com.mukss.eventweb.entities.Attend;
 import com.mukss.eventweb.entities.Event;
 import com.mukss.eventweb.entities.User;
 import com.mukss.eventweb.exceptions.EventNotFoundException;
@@ -62,6 +63,11 @@ public class EventsController {
 		// attend 추가
 		
 		model.addAttribute("event", event);
+		
+		// 'eattend' 객체 추가
+		if (!model.containsAttribute("eattend")) {
+			model.addAttribute("eattend", new Attend());
+		}
 		
 		return "events/view";
 		
