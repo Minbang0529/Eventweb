@@ -11,6 +11,3 @@ public interface EventRepository extends CrudRepository<Event, Long>{
 	
 }
 
-public Event saveImg(MultipartFile imgFile) {};
-
-

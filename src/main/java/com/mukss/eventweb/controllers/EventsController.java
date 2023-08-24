@@ -1,5 +1,6 @@
 package com.mukss.eventweb.controllers;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import javax.validation.Valid;
@@ -23,6 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 
 import com.mukss.eventweb.config.userdetails.CustomUserDetails;
 import com.mukss.eventweb.entities.Event;
@@ -36,9 +40,6 @@ public class EventsController {
 	
 	@Autowired
 	private EventService eventService;
-	
-	private String imgName;
-	private String imgPath;
 	
 	// TODO: Add not_found error
 	@ExceptionHandler(EventNotFoundException.class)
@@ -63,10 +64,8 @@ public class EventsController {
 		
 		Event event = eventService.findById(id).orElseThrow(() -> new EventNotFoundException(id));
 		
-		// attend 추가
-		
+		// attend 추가		
 		model.addAttribute("event", event);
-		
 		return "events/view";
 		
 	}
@@ -81,15 +80,15 @@ public class EventsController {
 		return "events/new";
 	}
 	
-	@PostMapping(value = "/new", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@PostMapping(value = "/new", consumes = MediaType.ALL_VALUE)
 	public String createEvent(@RequestParam("imgFile") MultipartFile imgFile, @RequestBody @Valid @ModelAttribute Event event, BindingResult errors,
-			Model model, RedirectAttributes redirectAttrs) {
+			Model model, RedirectAttributes redirectAttrs) throws IOException {
 		
 		if (errors.hasErrors()) {
 			model.addAttribute("event", event);
 			return "events/new";
 		}
-		
+
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = null;
 		if (principal instanceof CustomUserDetails) {
@@ -98,7 +97,11 @@ public class EventsController {
 		event.setUser(user);
 		event.setTimeUploaded(LocalDateTime.now());
 		
-		eventService.saveImg(imgFile);
+		// Saving an image for an event
+		String fileName = StringUtils.cleanPath(imgFile.getOriginalFilename());
+		event.setImageName(fileName);
+		event.setImageFileType(imgFile.getContentType());
+		event.setData(imgFile.getBytes());
 		
 		// save post after automatically adding relevant meta info
 		eventService.save(event);

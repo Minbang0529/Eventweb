@@ -35,10 +35,10 @@ public class EventServiceImpl implements EventService{
 		return eventRepository.save(event);
 	}
 	
-	@Override
-	public Event saveImg(MultipartFile imgFile) {
-		return eventRepository.saveImg(imgFile);
-	}
+//	@Override
+//	public Event saveImg(MultipartFile imgFile) {
+//		return eventRepository.saveImg(imgFile);
+//	}
 	
 	@Override
 	public void deleteById(long id) {

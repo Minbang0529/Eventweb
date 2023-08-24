@@ -13,17 +13,16 @@
         <tr>
           <th>Title</th>
           <th>Author</th>
-          <th>UploadTime</th>
+          <th>Time Uploaded</th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="p : ${events}">
+        <tr th:each="e : ${events}">
           <td>
-            <a th:href="@{'/events/' + ${p.id}}" th:text="${p.title}">Event Title</a>
+            <a th:href="@{'/events/' + ${e.id}}" th:text="${e.title}">Event Title</a>
           </td>
-          <td th:text="${{p.user.userName}}">Event Author</td>
-          <td th:text="${{p.timeUploaded}}">12.25</td>
-        </tr>
+          <td th:text="${{e.user?.userName}}">Event Author</td>
+          <td th:text="${{e.user?.timeUploaded}}">Time Uploaded</td>
       </tbody>
     </table>
 

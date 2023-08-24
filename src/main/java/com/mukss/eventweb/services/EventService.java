@@ -16,7 +16,7 @@ public long count();
 	
 	public Event save(Event event);
 	
-	public Event saveImg(MultipartFile imgFile);
+//	public Event saveImg(MultipartFile imgFile);
 	
 	public void deleteById(long id);
 	

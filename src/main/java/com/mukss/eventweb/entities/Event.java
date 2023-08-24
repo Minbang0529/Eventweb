@@ -8,9 +8,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -23,11 +26,11 @@ public class Event {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
 	private LocalDateTime timeUploaded;
 	
 	@NotEmpty
@@ -37,6 +40,13 @@ public class Event {
 	private String content;
 	
 	private String location;
+	
+    private String imageName;
+
+    private String imageFileType;
+    
+    @Lob
+    private byte[] data;
 	
 	public User getUser() {
 		return user;
@@ -85,5 +95,28 @@ public class Event {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	public String getImageFileType() {
+		return imageFileType;
+	}
+
+	public void setImageFileType(String imageFileType) {
+		this.imageFileType = imageFileType;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
+	}
 }
