@@ -34,7 +34,7 @@
 		</thead>
 		<tbody>
 			<tr th:each="c : ${event.attends}">
-				<td th:text="${{c.user.userName}}">Comment author here</td>
+				<td th:text="${{c.user?.userName}}">Comment author here</td>
 				<td th:text="${{c.timeUploaded}}">12.25</td>
 				<td th:text="${{c.bankName}}">Comment content here</td>
 				
@@ -45,7 +45,7 @@
 		<!-- Attend Form -->
 		<h1><i class="fas fa-user-plus"></i> Attend Event</h1>
 		
-		<form action="#" th:action="@{/attends/{id}(id=${event.id})}" th:object="${eattend}" method="post">
+		<form action="#" th:action="@{/attends?(eventId=${event.id})}" th:object="${eattend}" method="post">
       	<div class="form-group">
       	<!-- Hidden form that stores id -->
       	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />

@@ -15,74 +15,74 @@ import javax.persistence.FetchType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name="attends")
+@Table(name="attend")
 public class Attend {
-	
-	@Id
-	@Column(name = "attend_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING)
-	private LocalDateTime timeUploaded;
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING)
-	private LocalDateTime lastEdited;
-	
-	private String bankName;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="event_id", nullable=false)
-	private Event event;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private User user;
 
-	public long getId() {
-		return id;
-	}
+    @Id
+    @Column(name = "attend_id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private long id;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private LocalDateTime timeUploaded;
 
-	public LocalDateTime getTimeUploaded() {
-		return timeUploaded;
-	}
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private LocalDateTime lastEdited;
 
-	public void setTimeUploaded(LocalDateTime timeUploaded) {
-		this.timeUploaded = timeUploaded;
-	}
+    private String bankName;
 
-	public LocalDateTime getLastEdited() {
-		return lastEdited;
-	}
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="event_id", nullable=false)
+    private Event event;
 
-	public void setLastEdited(LocalDateTime lastEdited) {
-		this.lastEdited = lastEdited;
-	}
+    @ManyToOne(fetch=FetchType.LAZY)
+    private User user;
 
-	public String getBankName() {
-		return bankName;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public Event getEvent() {
-		return event;
-	}
+    public LocalDateTime getTimeUploaded() {
+        return timeUploaded;
+    }
 
-	public void setEvent(Event event) {
-		this.event = event;
-	}
-	
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
-	public User getUser() {
-		return user;
-	}
+    public void setTimeUploaded(LocalDateTime timeUploaded) {
+        this.timeUploaded = timeUploaded;
+    }
+
+    public LocalDateTime getLastEdited() {
+        return lastEdited;
+    }
+
+    public void setLastEdited(LocalDateTime lastEdited) {
+        this.lastEdited = lastEdited;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
 }
