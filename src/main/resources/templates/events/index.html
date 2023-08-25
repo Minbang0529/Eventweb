@@ -22,7 +22,7 @@
             <a th:href="@{'/events/' + ${e.id}}" th:text="${e.title}">Event Title</a>
           </td>
           <td th:text="${{e.user?.userName}}">Event Author</td>
-          <td th:text="${{e.user?.timeUploaded}}">Time Uploaded</td>
+          <td th:text="${{e?.timeUploaded}}">Time Uploaded</td>
       </tbody>
     </table>
 

@@ -23,6 +23,10 @@
 		<p th:text="${{event.content}}">event Content</p>
 		<hr>
 		
+		<h1>Image</h1>
+		<img th:src="${'data:'+ imageFileType +';charset=utf-8;base64,'+ eventImage }" alt="">
+		<hr>
+
 		<!-- Update form button -->
 		<form th:action="@{/events/update/{num}(num=${event.id})}" th:method="get">
              <button type="submit" class="btn btn-info mb-2"> Update</button>

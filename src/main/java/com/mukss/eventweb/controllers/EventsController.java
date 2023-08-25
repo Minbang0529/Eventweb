@@ -1,8 +1,12 @@
 package com.mukss.eventweb.controllers;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Base64;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,11 +67,14 @@ public class EventsController {
 			@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
 		
 		Event event = eventService.findById(id).orElseThrow(() -> new EventNotFoundException(id));
-		
+
+		String imageString = Base64.getEncoder().encodeToString(event.getData());
+
 		// attend 추가		
 		model.addAttribute("event", event);
-		return "events/view";
-		
+		model.addAttribute("eventImage", imageString);
+		model.addAttribute("imageFileType", event.getImageFileType());
+		return "events/view";	
 	}
 	
 	// Adding new event
