@@ -37,6 +37,7 @@ import com.mukss.eventweb.entities.Event;
 import com.mukss.eventweb.entities.User;
 import com.mukss.eventweb.exceptions.EventNotFoundException;
 import com.mukss.eventweb.services.EventService;
+import com.mukss.eventweb.entities.Attend;
 
 @Controller
 @RequestMapping(value = "/events", produces = MediaType.TEXT_HTML_VALUE)
@@ -74,8 +75,14 @@ public class EventsController {
 		model.addAttribute("event", event);
 		model.addAttribute("eventImage", imageString);
 		model.addAttribute("imageFileType", event.getImageFileType());
+		
+		// 'eattend' 객체 추가
+		if (!model.containsAttribute("eattend")) {
+			model.addAttribute("eattend", new Attend());
+		}
 		return "events/view";	
 	}
+	
 	
 	// Adding new event
 	@GetMapping("/new")
@@ -117,7 +124,6 @@ public class EventsController {
 		return "redirect:/events";
 	}
 		
-		
 	// Update new event
 	@GetMapping("/update/{id}")
 	public String updateEvent(@PathVariable("id") long id, Model model) {
@@ -154,7 +160,5 @@ public class EventsController {
 		redirectAttrs.addFlashAttribute("ok_message", "Event deleted.");
 		return "redirect:/events";
 	}
-	
-	
 	
 }

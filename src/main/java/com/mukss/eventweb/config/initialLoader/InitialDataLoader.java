@@ -14,10 +14,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.mukss.eventweb.entities.Post;
 import com.mukss.eventweb.entities.Role;
 import com.mukss.eventweb.entities.User;
-import com.mukss.eventweb.services.PostService;
 import com.mukss.eventweb.services.RoleService;
 import com.mukss.eventweb.services.UserService;
 @Configuration
@@ -30,9 +28,6 @@ public class InitialDataLoader {
 	
 	@Autowired
 	private UserService userService;
-	
-	@Autowired
-	private PostService postService;
 	
   @Autowired
 	private RoleService roleService;
@@ -83,26 +78,7 @@ public class InitialDataLoader {
 			// TODO: Implement categories and initialize here
 			
 			// populate db with posts
-			if(postService.count() > 0) {
-				log.info("Database is already populated with posts.");
-			}else {
-				Post post1 = new Post();
-				// TODO: set category of post
-				// post.setCategory();
-				post1.setTitle("Test Post Title");
-				post1.setContent("Test Content");
-				post1.setLastEdited(LocalDateTime.now());
-				post1.setTimeUploaded(LocalDateTime.now());
-				post1.setUser(userService.findById(1).orElse(null));
-				postService.save(post1);
-				Post post2 = new Post();
-				post2.setTitle("Test Post Title 222");
-				post2.setContent("Test Content 222");
-				post2.setLastEdited(LocalDateTime.now().plusDays(2));
-				post2.setTimeUploaded(LocalDateTime.now().plusDays(1));
-				post2.setUser(userService.findById(1).orElse(null));
-				postService.save(post2);
-			}
+			
 			
 		};
 	}

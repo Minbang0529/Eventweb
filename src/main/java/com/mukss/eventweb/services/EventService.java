@@ -4,8 +4,6 @@ import java.util.Optional;
 
 import com.mukss.eventweb.entities.Event;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public interface EventService {
 
 public long count();
@@ -23,3 +21,4 @@ public long count();
 	public void deleteAll();
 	
 }
+

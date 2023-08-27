@@ -9,8 +9,7 @@
 	<div layout:fragment="content">
 		<p>This is where event details should appear.</p>
 		<hr>
-		
-		
+
 		<h1><i class="fas fa-bolt"></i> Title</h1>
 		<p style="width: 80%; word-wrap: break-word;" class="", th:text="${{event.title}}">Event TITLE</p>
 		<hr>
@@ -37,21 +36,43 @@
    		</form>
         <hr>
 
-		<h3>Comments</h3>
+		<h3>Attend</h3>
 		<table class="table table-striped table-hover">
-		<thead>
-			<tr>
-				<th>Author</th>
-				<th>UploadTime</th>
-				<th>Content</th>
-				<th>Delete</th>
-			</tr>
-		</thead>
+			<thead>
+				<tr>
+					<th>Author</th>
+					<th>UploadTime</th>
+					<th>Content</th>
+				
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="c : ${event.attends}">
+					<td th:text="${{c.user?.userName}}">Comment author here</td>
+					<td th:text="${{c.timeUploaded}}">12.25</td>
+					<td th:text="${{c.bankName}}">Comment content here</td>
+					
+				</tr>
+			</tbody>
 		
 		</table>
 		
+		<!-- Attend Form -->
+		<h1><i class="fas fa-user-plus"></i> Attend Event</h1>
 		
-		    
+		<form action="#" th:action="@{/attends?(eventId=${event.id})}" th:object="${eattend}" method="post">
+      	<div class="form-group">
+      	<!-- Hidden form that stores id -->
+      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
+	        <label for="name">Bank Name:</label>
+	        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter bankName..." autofocus="autofocus" />
+	        <p class="text-danger" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">errors</p>
+      	</div>
+      
+      	<button class="btn btn-primary mb-2" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
+    	</form>
+		
 		<a class="btn btn-primary mb-2" role="button" href="/events"><i class="fas fa-home" aria-hidden="true"></i> Back to list</a>
 	</div>  
 </body>

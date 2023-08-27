@@ -54,8 +54,6 @@ public class User {
             )
 	private Set<Role> roles = new HashSet<>();
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = false)
-	private List<Post> posts;
 
 	public long getId() {
 		return id;
@@ -120,13 +118,5 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
-	}
-
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
 	}
 }

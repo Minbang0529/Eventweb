@@ -17,6 +17,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+
+import javax.persistence.OneToMany;
+
 @Entity
 @Table(name="events")
 public class Event {
@@ -118,5 +124,27 @@ public class Event {
 
 	public void setData(byte[] data) {
 		this.data = data;
+	}
+	// attend code merge
+	
+	private Integer fee;
+	
+	@OneToMany(mappedBy="event", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	private List<Attend> attends;
+	
+	public Integer getFee() {
+		return fee;
+	}
+	
+	public void setFee(Integer fee) {
+		this.fee = fee;
+	}
+	
+	public List<Attend> getAttends(){
+		return attends;
+	}
+	
+	public void addAttend(Attend attend) {
+		this.attends.add(attend);
 	}
 }
