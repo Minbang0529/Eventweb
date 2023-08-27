@@ -63,6 +63,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 		// Use form login/logout for the Web.
 		http.formLogin().loginPage("/sign-in").permitAll();
 		http.logout().logoutUrl("/sign-out").logoutSuccessUrl("/").permitAll();
+		
 
 		// Use HTTP basic for the API.
 		http.requestMatcher(new AntPathRequestMatcher("/api/**")).httpBasic();

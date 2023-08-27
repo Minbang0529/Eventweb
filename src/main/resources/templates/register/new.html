@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/default}">
+<head>
+  <title>Registration</title>
+</head>
+<body>
+  <div layout:fragment="content">
+    <h1>Registration</h1>
+    
+     <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>username</th>
+          <th>password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="u : ${users}">
+          <td th:text="${{u.userName}}">User name</td>
+          <td th:text="${{u.password}}">password</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+    
+
+    <form  action="#" th:action="@{/register/new}" th:object="${user}" method="POST" enctype="utf8">
+    
+        <div class = "form-group" th:classappend = "${#fields.hasErrors('firstName')}? has-error">
+        <label for ="firstName">first Name</label>
+        <input class="form-control" type="text" name = "firstName" id = "firstName" placeholder="Please enter the first Name !" autofocus="autofocus" />
+        <p class = "text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">errors</p>
+     </div>
+     <div class = "form-group" th:classappend = "${#fields.hasErrors('lastName')}? has-error">
+        <label for ="lastName">Last Name</label>
+        <input class="form-control" type="text" name = "lastName" id = "lastName" placeholder="Please enter the Last Name !" autofocus="autofocus" />
+        <p class = "text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">errors</p>
+     </div>
+     <div class = "form-group" th:classappend = "${#fields.hasErrors('userName')}? has-error">
+        <label for ="userName">userName</label>
+        <input class="form-control" type="text" name = "userName" id = "userName" placeholder="Please enter the userName!" autofocus="autofocus" />
+        <p class = "text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">errors</p>
+     </div>
+     <div class = "form-group" th:classappend = "${#fields.hasErrors('password')}? has-error">
+        <label for ="password">password(student id)</label>
+        <input class="form-control" type="text" name = "password" id = "password" placeholder="Please enter the password !" autofocus="autofocus" />
+        <p class = "text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">errors</p>
+     </div>
+    <div class = "form-group" th:classappend = "${#fields.hasErrors('email')}? has-error">
+        <label for ="email">email</label>
+        <input class="form-control" type="text" name = "email" id = "email" placeholder="Please enter the email!" autofocus="autofocus" />
+        <p class = "text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">errors</p>
+     </div>
+    
+    
+    <p>By creating an account you agree to our Terms & Privacy.</p>
+    <button class="btn btn-primary" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
+      <a class="btn btn-warning" role="button" href="/posts"><i class="fas fa-ban" aria-hidden="true"></i> Cancel</a>
+     </form>
+
+
+
+
+  </body>
+	
+  </div>
+</body>
+</html>
