@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/default}">
+<head>
+  <title>Membership Register</title>
+</head>
+<body>
+  <div layout:fragment="content">
+    <form th:action="@{/membership/new}" method="post">
+      <!-- First Name -->
+      <div class="form-group mb-3">
+        <label for="firstName">First Name:</label>
+        <input class="form-control" type="text" name="firstName" id="firstName" autofocus="autofocus" />
+      </div>
+      <!-- Last Name -->
+      <div class="form-group mb-3">
+        <label for="lastName">Last Name:</label>
+        <input class="form-control" type="text" name="lastName" id="lastName" />
+      </div>
+      <!-- Username -->
+      <div class="form-group mb-3">
+        <label for="userName">Username:</label>
+        <input class="form-control" type="text" name="userName" id="userName" />
+      </div>
+      <!-- Password -->
+      <div class="form-group mb-3">
+        <label for="password">Password:</label>
+        <input class="form-control" type="password" name="password" id="password" />
+      </div>
+      <!-- Email -->
+      <div class="form-group mb-3">
+        <label for="email">Email:</label>
+        <input class="form-control" type="email" name="email" id="email" />
+      </div>
+    
+      <!-- Other fields can be added similarly -->
+    
+      <button class="btn btn-primary" type="submit"><i class="fas fa-sign-in-alt" aria-hidden="true"></i> Submit</button>
+      <a class="btn btn-warning" role="button" href="/"><i class="fas fa-ban" aria-hidden="true"></i> Cancel</a>
+    </form>
+    
+  </div>
+</body>
+</html>
