@@ -42,7 +42,9 @@ public class AttendController {
      */
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String createAttend(@RequestBody @Valid @ModelAttribute Attend eattend, BindingResult errors,
-    		@RequestParam(value = "eventId", required = true) String eventId, Model model, RedirectAttributes redirectAttrs) {
+    		@RequestParam(value = "eventId", required = true) String eventId, 
+    		@RequestParam(value = "status", required = true) String status,
+    		Model model, RedirectAttributes redirectAttrs) {
     	
     	long parsedEventId = Long.parseLong(eventId);
     	
@@ -71,6 +73,7 @@ public class AttendController {
         eattend.setTimeUploaded(LocalDateTime.now());
         eattend.setLastEdited(LocalDateTime.now());
         eattend.setEvent(event);
+        eattend.setStatus(status);
         attendService.save(eattend);
         redirectAttrs.addFlashAttribute("ok_message", "New attend added.");
 

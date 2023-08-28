@@ -4,6 +4,32 @@
       layout:decorate="~{layouts/default}">
 <head>
 	<title>Event View</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+    $(document).ready(function() {
+        $('.status-button').click(function() {
+            var buttonGroup = $(this).closest('.btn-group'); // 클릭된 버튼이 속한 그룹
+            var selectedStatus = $(this).attr('data-status');
+
+            // 해당 버튼 그룹 내의 모든 버튼 초기화
+            buttonGroup.find('.status-button').removeClass('active').addClass('blur');
+            
+            // 클릭된 버튼만 활성화
+            $(this).removeClass('blur').addClass('active');
+
+            // 선택된 상태 값을 hidden input에 설정하여 컨트롤러로 전송
+            $('#statusInput').val(selectedStatus);
+        });
+    });
+</script>
+
+	<style>
+	  /* 선택되지 않은 버튼의 흐릿한 스타일 */
+	  .status-button.blur {
+	    opacity: 0.5;
+	  }
+	</style>
+	
 </head>
 <body>
 	<div layout:fragment="content">
@@ -11,15 +37,15 @@
 		<hr>
 
 		<h1><i class="fas fa-bolt"></i> Title</h1>
-		<p style="width: 80%; word-wrap: break-word;" class="", th:text="${{event.title}}">Event TITLE</p>
+		<p style="width: 80%; word-wrap: break-word;" class="" th:text="${event.title}">Event TITLE</p>
 		<hr>
 		
 		<h1><i class="fas fa-calendar"></i> Author</h1>
-		<p th:text="${{event.user.userName}}">Author Username</p>
+		<p th:text="${event.user.userName}">Author Username</p>
 		<hr>
 		  
 		<h1><i class="fas fa-calendar"></i> Content</h1>
-		<p th:text="${{event.content}}">event Content</p>
+		<p th:text="${event.content}">event Content</p>
 		<hr>
 		
 		<h1>Image</h1>
@@ -43,16 +69,22 @@
 					<th>Author</th>
 					<th>UploadTime</th>
 					<th>Content</th>
-				
+					<th>Status</th>
 				</tr>
 			</thead>
 			
 			<tbody>
 				<tr th:each="c : ${event.attends}">
-					<td th:text="${{c.user?.userName}}">Comment author here</td>
-					<td th:text="${{c.timeUploaded}}">12.25</td>
-					<td th:text="${{c.bankName}}">Comment content here</td>
-					
+					<td th:text="${c.user?.userName}">Comment author here</td>
+					<td th:text="${c.timeUploaded}">12.25</td>
+					<td th:text="${c.bankName}">Comment content here</td>
+		            <td>
+		            	<div class="btn-group">
+					    <button type="button" class="btn btn-success btn-sm status-button" th:classappend="${eattend.status == 'Confirmed' ? 'active' : 'blur'}" th:attr="data-status='Confirmed'">Confirmed</button>
+					    <button type="button" class="btn btn-warning btn-sm status-button" th:classappend="${eattend.status == 'Waiting' ? 'active' : 'blur'}" th:attr="data-status='Waiting'">Waiting</button>
+					    <button type="button" class="btn btn-danger btn-sm status-button" th:classappend="${eattend.status == 'Rejected' ? 'active' : 'blur'}" th:attr="data-status='Rejected'">Rejected</button>
+						</div>
+					</td>
 				</tr>
 			</tbody>
 		
@@ -62,14 +94,15 @@
 		<h1><i class="fas fa-user-plus"></i> Attend Event</h1>
 		
 		<form action="#" th:action="@{/attends?(eventId=${event.id})}" th:object="${eattend}" method="post">
-      	<div class="form-group">
-      	<!-- Hidden form that stores id -->
-      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
-	        <label for="name">Bank Name:</label>
-	        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter bankName..." autofocus="autofocus" />
-	        <p class="text-danger" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">errors</p>
-      	</div>
-      
+			<input type="hidden" id="statusInput" name="status" th:value="${eattend.status}" />
+			
+	      	<div class="form-group">
+	      	<!-- Hidden form that stores id -->
+	      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
+		        <label for="name">Bank Name:</label>
+		        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter bankName..." autofocus="autofocus"></textarea>
+		        <p class="text-danger" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">errors</p>
+	      	</div>
       	<button class="btn btn-primary mb-2" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
     	</form>
 		

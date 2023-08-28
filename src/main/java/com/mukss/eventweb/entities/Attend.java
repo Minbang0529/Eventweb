@@ -30,6 +30,8 @@ public class Attend {
     private LocalDateTime lastEdited;
 
     private String bankName;
+    
+    private String status;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="event_id", nullable=false)
@@ -84,5 +86,13 @@ public class Attend {
 
     public User getUser() {
         return user;
+    }
+    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
