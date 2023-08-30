@@ -46,6 +46,8 @@ public class User {
 	
 	private boolean enabled;
 	
+	private String membershipStatus;
+	
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
@@ -118,5 +120,13 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getMembershipStatus() {
+		return membershipStatus;
+	}
+
+	public void setMembershipStatus(String membershipStatus) {
+		this.membershipStatus = membershipStatus;
 	}
 }

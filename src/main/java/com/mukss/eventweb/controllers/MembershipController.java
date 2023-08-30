@@ -45,6 +45,12 @@ public class MembershipController {
 	    return "membership/new";
 	}
 	
+	@GetMapping("/index")
+	public String getMemberships(Model model) {
+		model.addAttribute("memberships", membershipService.findAll());
+		return "membership/index";
+	}
+	
 	@GetMapping("/{id}/confirm")
     public String setConfirm(@PathVariable("id") long id, 
 			Model model, RedirectAttributes redirectAttrs) {
@@ -59,7 +65,7 @@ public class MembershipController {
 	
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String createMembership(@RequestBody @Valid @ModelAttribute Membership membership, BindingResult errors, 
-    		@RequestParam(value = "status", required = true) String status,
+    		@RequestParam(value = "status", defaultValue = "Waiting") String status,
     		Model model, RedirectAttributes redirectAttrs)  {
     	
     	
@@ -87,6 +93,7 @@ public class MembershipController {
         membership.setLastEdited(LocalDateTime.now());
         membership.setStatus(status);
         membershipService.save(membership);
+        user.setMembershipStatus(status);
         redirectAttrs.addFlashAttribute("ok_message", "New membership added.");
 
         // return to original url upon saving

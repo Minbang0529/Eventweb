@@ -14,7 +14,7 @@ import javax.persistence.FetchType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name="membership")
+@Table(name="memberships")
 public class Membership {
 
     @Id

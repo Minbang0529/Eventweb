@@ -57,6 +57,7 @@
               </button>
             </div>
           </form>
+          <!-- 멤버십 버튼-->
           <form
             class="form-inline"
             th:action="@{/membership}"
@@ -69,10 +70,39 @@
                 role="button"
                 th:href="@{/membership}"
               >
-                <i class="fas fa-user-plus" aria-hidden="true"></i> Membership
+                <i class="fas fa-user-plus" aria-hidden="true"></i>
               </a>
             </div>
           </form>
+          <!-----------------------Signed in as 이름 옆에 멤버십/비멤버십 구별하려다 실패---------------------------------------->
+          <div th:with="user=${authenticatedUser}">
+            <div sec:authorize="isAuthenticated()">
+              <a
+                class="navbar-text"
+                th:if="${user != null and user.membershipStatus.equals('Confirmed')}"
+                >MEMBER</a
+              >
+            </div>
+          </div>
+
+          <div th:with="user=${authenticatedUser}">
+            <div sec:authorize="isAuthenticated()">
+              <a
+                class="navbar-text"
+                th:if="${user != null and user.membershipStatus.equals('Waiting')}"
+                >PENDING</a
+              >
+            </div>
+          </div>
+          <!------------------------Signed in as 이름 옆에 멤버십/비멤버십 구별하려다 실패---------------------------------------->
+
+          <a
+            th:with="user=${authenticatedUser}"
+            sec:authorize="isAuthenticated()"
+            class="navbar-text"
+            th:if="${user == null}"
+            >user is null</a
+          >
         </div>
       </div>
     </nav>
