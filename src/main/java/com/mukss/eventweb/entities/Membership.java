@@ -29,6 +29,8 @@ public class Membership {
     private LocalDateTime lastEdited;
 
     private String bankName;
+    
+    private String status;
 
 
     @ManyToOne(fetch=FetchType.LAZY)
@@ -74,4 +76,12 @@ public class Membership {
     public User getUser() {
         return user;
     }
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

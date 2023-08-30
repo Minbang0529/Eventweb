@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mukss.eventweb.config.userdetails.CustomUserDetails;
@@ -44,9 +45,22 @@ public class MembershipController {
 	    return "membership/new";
 	}
 	
+	@GetMapping("/{id}/confirm")
+    public String setConfirm(@PathVariable("id") long id, 
+			Model model, RedirectAttributes redirectAttrs) {
+
+		Membership membership = membershipService.findById(id).get();
+		membership.setStatus("Confirmed");
+		membershipService.save(membership);
+
+		return "redirect:/sign-in";
+	}
+
+	
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String createMembership(@RequestBody @Valid @ModelAttribute Membership membership, BindingResult errors, 
-    		Model model, RedirectAttributes redirectAttrs) {
+    		@RequestParam(value = "status", required = true) String status,
+    		Model model, RedirectAttributes redirectAttrs)  {
     	
     	
         // return to original url if error
@@ -71,6 +85,7 @@ public class MembershipController {
         membership.setUser(user);
         membership.setTimeUploaded(LocalDateTime.now());
         membership.setLastEdited(LocalDateTime.now());
+        membership.setStatus(status);
         membershipService.save(membership);
         redirectAttrs.addFlashAttribute("ok_message", "New membership added.");
 
