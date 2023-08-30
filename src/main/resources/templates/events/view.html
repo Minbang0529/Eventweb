@@ -80,14 +80,14 @@
 					<td th:text="${c.bankName}">Comment content here</td>
 		            <td>
 		            	<div class="btn-group">
-					    <button type="button" class="btn btn-success btn-sm status-button" th:classappend="${eattend.status == 'Confirmed' ? 'active' : 'blur'}" th:attr="data-status='Confirmed'">Confirmed</button>
+					    <button type="button" th:onclick="location.href=@{'../attends/'+${c.id}}" class="btn btn-success btn-sm status-button" th:classappend="${eattend.status == 'Confirmed' ? 'active' : 'blur'}" th:attr="data-status='Confirmed'">Confirmed</button>
 					    <button type="button" class="btn btn-warning btn-sm status-button" th:classappend="${eattend.status == 'Waiting' ? 'active' : 'blur'}" th:attr="data-status='Waiting'">Waiting</button>
 					    <button type="button" class="btn btn-danger btn-sm status-button" th:classappend="${eattend.status == 'Rejected' ? 'active' : 'blur'}" th:attr="data-status='Rejected'">Rejected</button>
 						</div>
 					</td>
 				</tr>
 			</tbody>
-		
+			
 		</table>
 		
 		<!-- Attend Form -->

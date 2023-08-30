@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,18 @@ public class AttendController {
 
     @Autowired
     private AttendService attendService;
+    
+    @GetMapping("/{id}/confirm")
+    public String setConfirm(@PathVariable("id") long id, 
+    		@RequestParam(value = "eventId", required = true) String eventId,
+			Model model, RedirectAttributes redirectAttrs) {
+    	
+		Attend attend = attendService.findById(id).get();
+		attend.setStatus("Confirmed");
+		attendService.save(attend);
+		
+		return "redirect:/events/" + eventId;
+	}
 
     /*
      * add new attend with comment via contents of form (form should pass ? object)
