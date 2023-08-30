@@ -1,6 +1,8 @@
 package com.mukss.eventweb.controllers;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Base64;
 
 import javax.validation.Valid;
 
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mukss.eventweb.config.userdetails.CustomUserDetails;
 import com.mukss.eventweb.entities.Attend;
+import com.mukss.eventweb.entities.AttendsDTO;
 import com.mukss.eventweb.entities.Event;
 import com.mukss.eventweb.entities.User;
 import com.mukss.eventweb.exceptions.EventNotFoundException;
@@ -56,15 +59,25 @@ public class AttendController {
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String createAttend(@RequestBody @Valid @ModelAttribute Attend eattend, BindingResult errors,
     		@RequestParam(value = "eventId", required = true) String eventId, 
-    		@RequestParam(value = "status", required = true) String status,
+    		@RequestParam(value = "status", defaultValue = "Waiting") String status,
     		Model model, RedirectAttributes redirectAttrs) {
     	
     	long parsedEventId = Long.parseLong(eventId);
     	
         // return to original url if error
         if (errors.hasErrors()) {
-            model.addAttribute("eattend", eattend);
-            return "/events/" + parsedEventId;
+        	Event event = eventService.findById(parsedEventId).orElseThrow(() -> new EventNotFoundException(parsedEventId));
+    		
+        	String imageString = Base64.getEncoder().encodeToString(event.getData());
+
+    		// attend 추가		
+    		model.addAttribute("event", event);
+    		model.addAttribute("eventImage", imageString);
+    		model.addAttribute("imageFileType", event.getImageFileType());
+            
+    		model.addAttribute("eattend", eattend);
+            
+    		return "redirect:/events/" + eventId;
         }
 
         // set author info and time info here
@@ -92,6 +105,18 @@ public class AttendController {
 
         // return to original url upon saving
         return "redirect:/events/" + eventId;
+    }
+    
+    @PostMapping(value = "/editAttends", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String editAttends(@RequestBody @Valid  @ModelAttribute AttendsDTO attendsForm, BindingResult errors,
+    		@RequestParam(value = "eventId", required = true) String eventId, RedirectAttributes redirectAttrs) { 
+    	for(Attend a: attendsForm.getAttendList()) {
+    		a.setTimeUploaded(LocalDateTime.now());
+    		attendService.save(a);
+    	}
+    	
+    	redirectAttrs.addFlashAttribute("ok_message", "Attendances Saved");
+    	return "redirect:/events/" + eventId;
     }
 
     // delete one attend

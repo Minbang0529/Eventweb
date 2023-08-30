@@ -38,6 +38,7 @@ import com.mukss.eventweb.entities.User;
 import com.mukss.eventweb.exceptions.EventNotFoundException;
 import com.mukss.eventweb.services.EventService;
 import com.mukss.eventweb.entities.Attend;
+import com.mukss.eventweb.entities.AttendsDTO;
 
 @Controller
 @RequestMapping(value = "/events", produces = MediaType.TEXT_HTML_VALUE)
@@ -70,11 +71,16 @@ public class EventsController {
 		Event event = eventService.findById(id).orElseThrow(() -> new EventNotFoundException(id));
 
 		String imageString = Base64.getEncoder().encodeToString(event.getData());
+		
+		AttendsDTO attendsForm = new AttendsDTO();
+		attendsForm.setAttendList(event.getAttends());
 
 		// attend 추가		
 		model.addAttribute("event", event);
 		model.addAttribute("eventImage", imageString);
 		model.addAttribute("imageFileType", event.getImageFileType());
+		
+		model.addAttribute("attendsForm", attendsForm);
 		
 		// 'eattend' 객체 추가
 		if (!model.containsAttribute("eattend")) {
