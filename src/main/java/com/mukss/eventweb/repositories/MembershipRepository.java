@@ -1,12 +1,9 @@
 package com.mukss.eventweb.repositories;
 
-import java.util.Optional;
-
 import org.springframework.data.repository.CrudRepository;
 
-import com.mukss.eventweb.entities.MembershipUser;
+import com.mukss.eventweb.entities.Membership;
 
-public interface MembershipRepository extends CrudRepository<MembershipUser, Long> {
-    public Optional<MembershipUser> findByuserName(String userName);
+public interface MembershipRepository extends CrudRepository<Membership, Long> {
+
 }
-
