@@ -142,14 +142,19 @@ public class EventsController {
 	public String updateEvent(@RequestBody @Valid @ModelAttribute Event event, BindingResult errors,
 			Model model, RedirectAttributes redirectAttrs) {
 		
+		Event retrievedEvent = eventService.findById(event.getId()).orElseThrow(()-> new EventNotFoundException(event.getId()));
+		
 		if (errors.hasErrors()) {
-			model.addAttribute("event", event);
+			model.addAttribute("event", retrievedEvent);
 			return "/events/update";
 		}
 		
+		retrievedEvent.setTitle(event.getTitle());
+		retrievedEvent.setContent(event.getContent());		
+		
 		// save update event info
-		eventService.save(event);
-		redirectAttrs.addFlashAttribute("ok_message", "New event added: ");
+		eventService.save(retrievedEvent);
+		redirectAttrs.addFlashAttribute("ok_message", "Event " + retrievedEvent.getTitle() + " was updated.");
 		return "redirect:/events";
 	}
 	
