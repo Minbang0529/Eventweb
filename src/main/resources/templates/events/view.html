@@ -24,11 +24,108 @@
 </script>
 
 	<style>
-	  /* 선택되지 않은 버튼의 흐릿한 스타일 */
-	  .status-button.blur {
-	    opacity: 0.5;
-	  }
-	</style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #663399;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input.form-control,
+    textarea.form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .text-danger {
+      color: #ff0000;
+    }
+
+    .btn-primary,
+    .btn-danger {
+      background-color: #663399;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-danger {
+      background-color: #d9534f;
+    }
+
+    .btn-primary:hover,
+    .btn-danger:hover {
+      background-color: #512b85;
+    }
+
+    .btn-info,
+    .btn-warning {
+      background-color: #f0ad4e;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+    }
+
+    .btn-warning {
+      background-color: #5bc0de;
+    }
+
+    .btn-info:hover,
+    .btn-warning:hover {
+      background-color: #ec971f;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .table th {
+      background-color: #f2f2f2;
+    }
+
+    .table th:first-child,
+    .table td:first-child {
+      border-left: none;
+    }
+
+    .table th:last-child,
+    .table td:last-child {
+      border-right: none;
+    }
+  </style>
 	
 </head>
 <body>
