@@ -2,7 +2,9 @@ package com.mukss.eventweb.controllers;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -59,7 +61,37 @@ public class EventsController {
 	// Returns all events as a list, under attribute "posts" of model
 	@GetMapping
 	public String getEvents(Model model) {
+		Iterable<Event> pastEvents; 
+		Iterable<Event> futureEvents;
+		
+		ArrayList<Event> eventsResults = new ArrayList<Event>();
+		
+		for (Event event : eventService.findAll()) {
+			eventsResults.add(event);
+		}
+		
+		eventsResults.sort((a, b) -> a.getTimeUploaded().compareTo(b.getTimeUploaded()) == 0 ? a.getTitle().compareTo(b.getTitle()) : a.getTimeUploaded().compareTo(b.getTimeUploaded()));
+		
+		ArrayList<Event> pastEventsResults = new ArrayList<Event>();
+		ArrayList<Event> futureEventsResults = new ArrayList<Event>();
+		
+		for (Event event : eventsResults) {
+			if (event.getTimeUploaded() != null 
+					&& event.getTimeUploaded().compareTo(LocalDateTime.now()) > 0) {
+				futureEventsResults.add(event);
+			} else {
+				pastEventsResults.add(event);
+			}
+		}
+		
+		pastEvents = pastEventsResults;
+		futureEvents = futureEventsResults;
+
+		model.addAttribute("pastEvents", pastEvents);
+		model.addAttribute("futureEvents", futureEvents);
 		model.addAttribute("events", eventService.findAll());
+		
+		
 		return "events/index";
 	}
 	
