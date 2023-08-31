@@ -71,6 +71,8 @@
           <th>Title</th>
           <th>Author</th>
           <th>Time Uploaded</th>
+          <th>Event Date</th>
+          <th>Event Time</th>
         </tr>
       </thead>
       <tbody>
@@ -80,6 +82,8 @@
           </td>
           <td th:text="${{e.user?.userName}}">Event Author</td>
           <td th:text="${{e?.timeUploaded}}">Time Uploaded</td>
+          <td th:text="${{e?.date}}">2000-01-01</td>
+          <td th:text="${{e?.time}}">00:00 GMT+1</td>
 
       </tbody>
     </table>

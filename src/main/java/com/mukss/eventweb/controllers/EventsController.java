@@ -148,7 +148,7 @@ public class EventsController {
 		} 		
 		event.setUser(user);
 		event.setTimeUploaded(LocalDateTime.now());
-		
+
 		// Saving an image for an event
 		String fileName = StringUtils.cleanPath(imgFile.getOriginalFilename());
 		event.setImageName(fileName);
