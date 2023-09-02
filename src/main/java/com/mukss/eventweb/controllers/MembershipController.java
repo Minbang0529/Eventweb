@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,8 +23,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mukss.eventweb.config.userdetails.CustomUserDetails;
 import com.mukss.eventweb.entities.Membership;
+import com.mukss.eventweb.entities.Role;
 import com.mukss.eventweb.entities.User;
 import com.mukss.eventweb.services.MembershipService;
+import com.mukss.eventweb.services.RoleService;
+import com.mukss.eventweb.services.UserService;
 
 @Controller
 @RequestMapping(value = "/membership", produces = MediaType.TEXT_HTML_VALUE)
@@ -32,6 +36,14 @@ public class MembershipController {
 
     @Autowired
     private MembershipService membershipService;
+    
+    @Autowired
+	private UserService userservice;
+    
+    @Autowired
+	private RoleService roleService;
+    
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
 
 	
 	@GetMapping
@@ -87,6 +99,18 @@ public class MembershipController {
         if (!model.containsAttribute("membership")) {
             model.addAttribute("membership", new Membership());
         }
+        
+        Role r = new Role();
+		r.setName("MEMBER");
+		roleService.save(r);
+		
+		user.getRoles().add(r);
+		user.setEnabled(true);
+		
+		String password = user.getPassword();
+		user.setPassword(this.passwordEncoder.encode(password));
+		
+		userservice.save(user);
 
         membership.setUser(user);
         membership.setTimeUploaded(LocalDateTime.now());
