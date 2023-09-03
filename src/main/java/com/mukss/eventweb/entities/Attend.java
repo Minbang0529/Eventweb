@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.FetchType;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -29,13 +30,16 @@ public class Attend {
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private LocalDateTime lastEdited;
 
+    @NotEmpty(message = "Please enter your Bank Name.")
     private String bankName;
+    
+    private String status;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="event_id", nullable=false)
     private Event event;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     private User user;
 
     public long getId() {
@@ -84,5 +88,13 @@ public class Attend {
 
     public User getUser() {
         return user;
+    }
+    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

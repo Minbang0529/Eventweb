@@ -50,15 +50,24 @@ public class Security extends WebSecurityConfigurerAdapter {
 
 	// List the mappings/methods for which no authorisation is required.
 	private static final RequestMatcher[] NO_AUTH = { new AntPathRequestMatcher("/webjars/**", "GET"),
-			new AntPathRequestMatcher("/api/**", "GET"),
-			new AntPathRequestMatcher("/", "GET"), new AntPathRequestMatcher("/api/users", "GET"),
 			new AntPathRequestMatcher("/**", "GET"),
-			new AntPathRequestMatcher("/**", "POST")};
+			new AntPathRequestMatcher("/authenticate", "POST"),
+			new AntPathRequestMatcher("/register/new", "POST"),
+			new AntPathRequestMatcher("/events/new", "POST"),
+	};
+	
+	private static final RequestMatcher[] USER_AUTH = {
+			new AntPathRequestMatcher("/**", "POST"),
+			new AntPathRequestMatcher("/attends", "POST"),
+	};
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// By default, all requests are authenticated except our specific list.
-		http.authorizeRequests().requestMatchers(NO_AUTH).permitAll().anyRequest().hasRole("ADMIN");
+		http.authorizeRequests()
+		.requestMatchers(NO_AUTH).permitAll()
+		.requestMatchers(USER_AUTH).hasRole("USER")
+		.anyRequest().hasRole("ADMIN");
 
 		// Use form login/logout for the Web.
 		http.formLogin().loginPage("/sign-in").permitAll();
