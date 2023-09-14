@@ -63,7 +63,7 @@
 </head>
 <body>
   <div layout:fragment="content">
-    <h1>All events</h1>
+    <h1>Upcoming events</h1>
 
     <table class="table table-striped table-hover">
       <thead>
@@ -71,18 +71,48 @@
           <th>Title</th>
           <th>Author</th>
           <th>Time Uploaded</th>
+          <th>Event Date</th>
+          <th>Event Time</th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="e : ${events}">
+        <tr th:each="e : ${futureEvents}">
           <td>
             <a th:href="@{'/events/' + ${e.id}}" th:text="${e.title}">Event Title</a>
           </td>
           <td th:text="${{e.user?.userName}}">Event Author</td>
           <td th:text="${{e?.timeUploaded}}">Time Uploaded</td>
+          <td th:text="${{e?.date}}">2000-01-01</td>
+          <td th:text="${{e?.time}}">00:00 GMT+1</td>
 
       </tbody>
     </table>
+    <div sec:authorize="hasAnyAuthority('ADMIN')">
+	    <h1>Past events</h1>
+	
+	    <table class="table table-striped table-hover">
+	      <thead>
+	        <tr>
+	          <th>Title</th>
+	          <th>Author</th>
+	          <th>Time Uploaded</th>
+	          <th>Event Date</th>
+	          <th>Event Time</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <tr th:each="e : ${pastEvents}">
+	          <td>
+	            <a th:href="@{'/events/' + ${e.id}}" th:text="${e.title}">Event Title</a>
+	          </td>
+	          <td th:text="${{e.user?.userName}}">Event Author</td>
+	          <td th:text="${{e?.timeUploaded}}">Time Uploaded</td>
+	          <td th:text="${{e?.date}}">2000-01-01</td>
+	          <td th:text="${{e?.time}}">00:00 GMT+1</td>
+	
+	      </tbody>
+	    </table>
+    </div>
 
     <p sec:authorize="hasAnyAuthority('ADMIN')">
       <a class="btn btn-primary" role="button" href="/events/new"><i class="fas fa-plus" aria-hidden="true"></i> Add a new greeting</a>

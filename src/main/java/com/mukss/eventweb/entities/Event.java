@@ -1,6 +1,8 @@
 package com.mukss.eventweb.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,6 +43,14 @@ public class Event {
 	
 	@NotEmpty
 	private String title;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate date;
+	
+	// set as string due to timezones and stuff ig
+	private String time;
+
 	
 	@NotEmpty
 	private String content;
@@ -147,4 +157,21 @@ public class Event {
 	public void addAttend(Attend attend) {
 		this.attends.add(attend);
 	}
+	
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 }
