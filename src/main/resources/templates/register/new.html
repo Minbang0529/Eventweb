@@ -4,113 +4,188 @@
 <head>
   <title>MUKSS Registration</title>
 </head>
+
+<div style="text-align: center;">
+  <img src="html/images/black_background.png" alt="loading..." style="width:480px;height: 270px;" >
+</div>
+
 <body>
   <div layout:fragment="content">
-    <h1>MUKSS Registration</h1>
     <style>
     body {
-      background-color: #f4f4f4;
-      font-family: Arial, sans-serif;
-      color: #333;
-    }
+	  box-sizing: border-box;
+	  margin: 0;
+	  padding: 0;
+	  background-color: white;
+	  font-family: "lato", sans-serif;
 
-    h1 {
-      text-align: center;
-      margin-top: 20px;
-      color: #663399;
-    }
+	}
 
-    .form-group {
-      margin-bottom: 20px;
-    }
+	.signupFrm {
+	  margin-top: -175px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  height: 100vh;
+	}
 
-    label {
-      font-weight: bold;
-    }
+	.form {
+	  background-color: white;
+	  width: 480px;
+	  border-radius: 10px;
+	  padding: 20px 40px;
+	  box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
+	}
 
-    input.form-control {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-    }
+	.title {
+	  font-size: 40px;
+	  margin-bottom: 50px;
+	}
+	
+	.inputContainer {
+	  position: relative;
+	  height: 45px;
+	  width: 90%;
+	  margin-bottom: 15px;
+	
+	}
+	
+	.input {
+	  position: absolute;
+	  top: 0;
+	  left: 0px;
+	  height: 100%;
+	  width: 100%;
+	  border: 1px solid #DADCE0;
+	  border-radius: 7px;
+	  font-size: 16px;
+	  padding: 0 20px;
+	  outline: none;
+	  background: none;
+	  z-index: 1;
+	}
+	
+	::placeholder {
+	  color: transparent;
+	}
+	
+	.label {
+	  position: absolute;
+	  top: 15px;
+	  left: 15px;
+	  padding: 0 4px;
+	  background-color: white;
+	  color: #DADCE0;
+	  font-size: 16px;
+	  transition: 0.5s;
+	  z-index: 0;
+	}
+	
+	.submitBtn {
+	  display: block;
+	  margin-left: auto;
+	  padding: 10px 25px;
+	  border: none;
+	  background-color: purple;
+	  color: white;
+	  border-radius: 5px;
+	  cursor: pointer;
+	  font-size: 16px;
+	  margin-top: 20px;
+	  float: right;
+	
+	}
+	
+	/* sign up button color change and move 1px upward when pointer in on. */
+	.submitBtn:hover {
+	  background-color: #80578a;
+	  transform: translateY(-1px);
+	}
+	
+	/* placeholder move to left top once we click the input box */
+	.input:focus+.label {
+	  top: -7px;
+	  left: 3px;
+	  z-index: 10;
+	  font-size: 14px;
+	  font-weight: 600;
+	  color: purple;
+	}
+	
+	/* set border color for each input label */
+	.input:focus {
+	  border: 2px solid purple;
+	}
+	
+	.green {
+	  color: purple;
+	}
 
-    .text-danger {
-      color: #ff0000;
-    }
-
-    p.terms {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .btn-primary {
-      background-color: #663399;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .btn-primary:hover {
-      background-color: #512b85;
-    }
-
-    .btn-warning {
-      background-color: #f0ad4e;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      margin-left: 10px;
-    }
-
-    .btn-warning:hover {
-      background-color: #d9534f;
-    }
+	.submitContainer {
+	  position: relative;
+	  height: 45px;
+	  width: 90%;
+	  margin-top: 40px;
+	}
+	
+	.btn-primary {
+	  background-color: purple;
+	  border-color: purple;
+	}
+	.btn-primary:hover {
+      background-color: #80578a;
+	}
+	
   </style>
+	<div class="signupFrm">
+	    <form  action="#" th:action="@{/register/new}" th:object="${user}" method="POST" enctype="utf8" class="form">
+	      <h1 class="title">MUKSS Registration</h1>
+	
+	      <div class = "inputContainer" th:classappend = "${#fields.hasErrors('firstName')}? has-error">
+	        <input id="firstName" name="firstName" type="text" class="input" placeholder=""
+	          required />
+	        <label for="firstName" class="label">First Name</label>
+	        <p class = "text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">errors</p>
+	      </div>
+	
+	      <div class = "inputContainer" th:classappend = "${#fields.hasErrors('lastName')}? has-error">
+	        <input id="lastName" name="lastName" type="text" class="input" placeholder="" required />
+	        <label for="lastName" class="label">Last Name</label>
+	        <p class = "text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">errors</p>
+	      </div>
+	
+	      <div class = "inputContainer" th:classappend = "${#fields.hasErrors('userName')}? has-error">
+	        <input id="userName" name="userName" type="text" class="input" placeholder="" required />
+	        <label for="userName" class="label">User Name</label>
+	        <p class = "text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">errors</p>
+	      </div>
+	
+	      <div class = "inputContainer" th:classappend = "${#fields.hasErrors('password')}? has-error">
+	        <input id="password" name="password" type="password" class="input" placeholder="" required />
+	        <label for="password" class="label">Password (Student ID)</label>
+	        <p class = "text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">errors</p>
+	      </div>
+	
+	      <div class = "inputContainer" th:classappend = "${#fields.hasErrors('email')}? has-error">
+	        <input id="email" name="email" type="text" class="input" placeholder=""
+	          required />
+	        <label for="email" class="label">Email</label>
+	        <p class = "text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">errors</p>
+	      </div>
+	
+	      <div class="inputContainer">
+	        <input id="terms" name="termsandconditions" type="checkbox" required />
+	        <label for="terms">By signing up you agree to the <a href="./termsandconditions.html" target="_blank">term and
+	            conditions</a>.</label>
+	      </div>
+	      
+		  <div class="submitContainer">
+	      <button class="btn btn-primary" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
+      	  <a class="btn btn-warning" role="button" href="/posts"><i class="fas fa-ban" aria-hidden="true"></i> Cancel</a>
+      	  </div>
+	    </form>
+  	</div>
 
-    <form  action="#" th:action="@{/register/new}" th:object="${user}" method="POST" enctype="utf8">
-    
-        <div class = "form-group" th:classappend = "${#fields.hasErrors('firstName')}? has-error">
-        <label for ="firstName">First Name</label>
-        <input class="form-control" type="text" name = "firstName" id = "firstName" placeholder="Please enter the first name" autofocus="autofocus" />
-        <p class = "text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">errors</p>
-     </div>
-     <div class = "form-group" th:classappend = "${#fields.hasErrors('lastName')}? has-error">
-        <label for ="lastName">Last Name</label>
-        <input class="form-control" type="text" name = "lastName" id = "lastName" placeholder="Please enter the last name" autofocus="autofocus" />
-        <p class = "text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">errors</p>
-     </div>
-     <div class = "form-group" th:classappend = "${#fields.hasErrors('userName')}? has-error">
-        <label for ="userName">User name</label>
-        <input class="form-control" type="text" name = "userName" id = "userName" placeholder="Please enter the user name" autofocus="autofocus" />
-        <p class = "text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">errors</p>
-     </div>
-     <div class = "form-group" th:classappend = "${#fields.hasErrors('password')}? has-error">
-        <label for ="password">password (student id)</label>
-        <input class="form-control" type="text" name = "password" id = "password" placeholder="Please enter the password" autofocus="autofocus" />
-        <p class = "text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">errors</p>
-     </div>
-    <div class = "form-group" th:classappend = "${#fields.hasErrors('email')}? has-error">
-        <label for ="email">email</label>
-        <input class="form-control" type="text" name = "email" id = "email" placeholder="Please enter the student email" autofocus="autofocus" />
-        <p class = "text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">errors</p>
-     </div>
-    
-    
-    <p>By creating an account you agree to our Terms & Privacy.</p>
-    <button class="btn btn-primary" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
-      <a class="btn btn-warning" role="button" href="/posts"><i class="fas fa-ban" aria-hidden="true"></i> Cancel</a>
-     </form>
 
 
 
