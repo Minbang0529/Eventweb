@@ -175,7 +175,7 @@ public class EventsController {
 		return "events/update";
 	}
 	
-	@PostMapping(value = "/update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@PostMapping(value = "/update", consumes = MediaType.ALL_VALUE)
 	public String updateEvent(@RequestBody @Valid @ModelAttribute Event event, BindingResult errors,
 			Model model, RedirectAttributes redirectAttrs) {
 		
@@ -187,7 +187,10 @@ public class EventsController {
 		}
 		
 		retrievedEvent.setTitle(event.getTitle());
-		retrievedEvent.setContent(event.getContent());		
+		retrievedEvent.setContent(event.getContent());	
+		retrievedEvent.setTime(event.getTime());
+		retrievedEvent.setDate(event.getDate());
+
 		
 		// save update event info
 		eventService.save(retrievedEvent);

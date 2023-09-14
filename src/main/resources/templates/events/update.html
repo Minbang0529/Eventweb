@@ -74,21 +74,33 @@
   <div layout:fragment="content">
     <h1>Update an existing event</h1>
     
-    <form action="#" th:action="@{/events/update}" th:object="${event}" method="post">
-      <div class="form-group">
-     	<!-- Hidden form that stores id, author and uploadtime -->
-      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
-      	<input class="form-control" type="hidden" id="user" th:field="*{user}" autofocus="autofocus" />
-      	<input class="form-control" type="hidden" id="timeUploaded" th:field="*{timeUploaded}" autofocus="autofocus" />
-      </div>
-      	<div class="form-group mb-3 px-1">
-        	<label for="title">Title</label>
-        	<input class="form-control mt-2" type="text" id="title" th:field="*{title}" placeholder="Enter event title" autofocus="autofocus" />
-        	<p class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{name}">errors</p>
-      	</div>
+    <form action="#" th:action="@{/events/update}" th:object="${event}" method="post" enctype="multipart/form-data">
       <div class="form-group mb-3">
-        <label for="name">event content</label>
-        <textarea class="form-control mt-2" type="text" id="content" th:field="*{content}" rows="5" placeholder="Enter event content" autofocus="autofocus" />
+     	<!-- Hidden form that stores id -->
+      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
+      	
+        <label for="title" class="mb-2">Title</label>
+        <input class="form-control" type="text" id="title" th:field="*{title}" placeholder="Enter event title" autofocus="autofocus" />
+        <p class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{name}">errors</p>
+      </div>
+      
+      <div class="form-group mb-3">
+        <label for="date" class="mb-2">Event Date</label>
+        
+        <input class="form-control" type="text" id="date" th:field="*{date}" placeholder="yyyy-MM-dd" autofocus="autofocus" />
+        <p class="text-danger" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">errors</p>
+        
+      </div>
+      
+      <div class="form-group mb-3">
+        <label for="time" class="mb-2">Event Time</label>
+        <input class="form-control" type="text" id="time" th:field="*{time}" placeholder="Enter event time" autofocus="autofocus" />
+        <p class="text-danger" th:if="${#fields.hasErrors('time')}" th:errors="*{time}">errors</p>
+      </div>
+      
+      <div class="form-group mb-3">
+        <label for="name" class="mb-2">Event content</label>
+        <textarea class="form-control mb-3" type="text" id="content" th:field="*{content}" rows="5" placeholder="Enter event content" autofocus="autofocus" />
         <p class="text-danger" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">errors</p>
       </div>
       
