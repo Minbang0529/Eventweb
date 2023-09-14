@@ -55,6 +55,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 			new AntPathRequestMatcher("/register/new", "POST"),
 			new AntPathRequestMatcher("/events/new", "POST"),
 			new AntPathRequestMatcher("/events/update", "POST"),
+			new AntPathRequestMatcher("/**"),
 	};
 	
 	private static final RequestMatcher[] USER_AUTH = {
