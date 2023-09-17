@@ -83,8 +83,18 @@ public class MembershipController {
 	
 	@PostMapping(value="/update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public String updateMemberships(Model model, @RequestBody @Valid @ModelAttribute MembershipsDTO membershipsDTO, RedirectAttributes redirectAttrs) {
-		Role memberRole = roleService.findByname("MEMBER").orElseThrow(()-> new UserNotFoundException("MEMBER"));
-		Role userRole = roleService.findByname("USER").orElseThrow(()-> new UserNotFoundException("USER"));
+		Role memberRole = roleService.findByname("USER").get();
+		if(memberRole == null) {
+			memberRole = new Role();
+			memberRole.setName("USER");
+			roleService.save(memberRole);
+		}
+		Role userRole = roleService.findByname("USER").get();
+		if(userRole == null) {
+			userRole = new Role();
+			userRole.setName("USER");
+			roleService.save(userRole);
+		}
 
 		for (User u: membershipsDTO.getUsersList()) {
 			Set<Role> roles = new HashSet<>();
