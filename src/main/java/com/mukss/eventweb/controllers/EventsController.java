@@ -8,6 +8,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -118,6 +119,38 @@ public class EventsController {
 			model.addAttribute("eattend", new Attend());
 		}
 		return "events/view";	
+	}
+	
+	@GetMapping("/attendee/{id}")
+	public String getAttendee(@PathVariable("id") long id,
+			@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
+		
+		Event event = eventService.findById(id).orElseThrow(() -> new EventNotFoundException(id));
+
+		String imageString = Base64.getEncoder().encodeToString(event.getData());
+		
+		AttendsDTO attendsForm = new AttendsDTO();
+		List<Attend> attlist = event.getAttends();
+		List<Attend> flist = new ArrayList<Attend>();
+		for (int i=0; i < attlist.size(); i++) {
+			if (attlist.get(i).getStatus().contains("firm")) {
+				flist.add(attlist.get(i));
+			}
+		}
+		attendsForm.setAttendList(flist);
+
+		// attend 추가		
+		model.addAttribute("event", event);
+		model.addAttribute("eventImage", imageString);
+		model.addAttribute("imageFileType", event.getImageFileType());
+		
+		model.addAttribute("attendsForm", attendsForm);
+		
+		// 'eattend' 객체 추가
+		if (!model.containsAttribute("eattend")) {
+			model.addAttribute("eattend", new Attend());
+		}
+		return "events/attendee";	
 	}
 	
 	
