@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mukss.eventweb.entities.Attend;
 import com.mukss.eventweb.entities.Membership;
 import com.mukss.eventweb.entities.MembershipsDTO;
 import com.mukss.eventweb.entities.Role;
@@ -76,6 +77,25 @@ public class MembershipController {
 
 		MembershipsDTO membershipsDTO = new MembershipsDTO();
 		membershipsDTO.setUsersList(waitingMembers);
+
+		model.addAttribute("membershipsDTO", membershipsDTO);
+		return "membership/index";
+	}
+	
+	@GetMapping("/list")
+	public String getMemberlist(Model model) {
+		List<User> confirmedMembers = userService.findBymembership("Confirmed");
+
+		Iterable<User> ulist = userService.findAll();
+		List<User> memlist = new ArrayList<User>();
+		for (User u : ulist) {
+			if (u.getMembership().contains("firm")) {
+				memlist.add(u);
+			}
+		}
+		
+		MembershipsDTO membershipsDTO = new MembershipsDTO();
+		membershipsDTO.setUsersList(memlist);
 
 		model.addAttribute("membershipsDTO", membershipsDTO);
 		return "membership/index";
