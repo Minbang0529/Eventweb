@@ -1,5 +1,6 @@
 package com.mukss.eventweb.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.mukss.eventweb.entities.User;
@@ -17,4 +18,6 @@ public interface UserService {
 	public User save(User user);
 	
 	public void updateUser(User user, long id);
+	
+	public List<User> findBymembership(String membership);
 }

@@ -1,5 +1,6 @@
 package com.mukss.eventweb.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Optional<User> findByName(String userName) {
 		return userRepository.findByuserName(userName);
+	}
+
+	@Override
+	public List<User> findBymembership(String membership) {
+		return userRepository.findBymembership(membership);
 	}
 
 
