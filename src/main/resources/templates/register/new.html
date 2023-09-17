@@ -81,6 +81,10 @@
     <form  action="#" th:action="@{/register/new}" th:object="${user}" method="POST" enctype="utf8">
     
         <div class = "form-group" th:classappend = "${#fields.hasErrors('firstName')}? has-error">
+        
+        <!-- hidden form that stores membership info -->
+        <input class="form-control" type="hidden" id="id" th:field="*{membership}" autofocus="autofocus" />
+        
         <label for ="firstName">First Name</label>
         <input class="form-control" type="text" name = "firstName" id = "firstName" placeholder="Please enter the first name" autofocus="autofocus" />
         <p class = "text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">errors</p>

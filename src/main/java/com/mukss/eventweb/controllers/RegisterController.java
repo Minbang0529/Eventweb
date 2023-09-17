@@ -68,9 +68,12 @@ public class RegisterController {
 		//TODO: Handle if there is no user logged in.
 		
 		Role r = new Role();
-		r.setName("USER");
-		roleService.save(r);
 		
+		r = roleService.findByname("USER").get();
+		if(r == null) {
+			r.setName("USER");
+			roleService.save(r);
+		}
 		user.getRoles().add(r);
 		user.setEnabled(true);
 		
