@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.GeneratedValue;
@@ -13,11 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.persistence.Column;
+
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="users")
@@ -35,6 +34,7 @@ public class User {
 	private String lastName;
 	
 	@NotEmpty(message = "Please enter your username.")
+	@Column(unique=true)
 	private String userName;
 	
 	@NotEmpty(message = "Please enter your password.")
@@ -43,7 +43,16 @@ public class User {
 	@NotEmpty(message = "Please enter your email.")
 	private String email;
 	
+	private String membership;
 	
+	public String getMembership() {
+		return membership;
+	}
+
+	public void setMembership(String membership) {
+		this.membership = membership;
+	}
+
 	private boolean enabled;
 	
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)

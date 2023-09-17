@@ -18,6 +18,7 @@ public class Role {
 	private long id;
 	
 	@NotEmpty
+	@Column(unique=true)
 	private String name;
 
 	public long getId() {

@@ -47,12 +47,17 @@ public class InitialDataLoader {
 				Role r2 = new Role();
 				r2.setName("USER");
 				
+				Role r3 = new Role();
+				r3.setName("MEMBER");
+				
 				roleService.save(r1);
 				roleService.save(r2);
+				roleService.save(r3);
 				
 				User user = new User();
 				user.getRoles().add(r1);
 				user.getRoles().add(r2);
+				user.getRoles().add(r3);
 				user.setFirstName("Minsung");
 				user.setLastName("Kang");
 				// very cheeky, william
@@ -60,15 +65,17 @@ public class InitialDataLoader {
 				user.setPassword(this.passwordEncoder.encode("i-am-a-professor"));
 				user.setEmail("sample@email.com");
 				user.setEnabled(true);
+				user.setMembership("Waiting");
 				
 				User user2 = new User();
-				user2.getRoles().add(r2);
+				user2.getRoles().add(r3);
 				user2.setFirstName("william");
 				user2.setLastName("aung");
 				user2.setUserName("aaa");
 				user2.setPassword(this.passwordEncoder.encode("aaa"));
 				user2.setEmail("w.a@gmail.com");
 				user2.setEnabled(true);
+				user2.setMembership("Waiting");
 				
 				
 				userService.save(user);
