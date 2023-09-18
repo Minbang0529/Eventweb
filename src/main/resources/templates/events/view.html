@@ -164,6 +164,7 @@
              <button type="submit" class="btn btn-info mb-2"> View Attendees</button>
         </form>
 
+		<div sec:authorize="hasAnyAuthority('ADMIN')">
 		<h3>Attend</h3>
 		<form action="#" th:action="@{/attends/editAttends?(eventId=${event.id})}" method="post" th:object="${attendsForm}">
 		<fieldset>
@@ -195,6 +196,38 @@
     							<option th:value="'Rejected'" th:text="Rejected" th:selected="*{attendList[__${itemStat.index}__].status == 'Rejected'}">Rejected</option>
 							</select>
 						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+		</form>
+		</div>
+		
+		<h3>Attend Request that You've Sent:</h3>
+		<form action="#" th:action="@{/attends/editAttends?(eventId=${event.id})}" method="post" th:object="${ownatt}">
+		<fieldset>
+			<input sec:authorize="hasAnyAuthority('ADMIN')" type="submit" id="submitButton" th:value="Save">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Author</th>
+						<th>UploadTime</th>
+						<th>Bank Name</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="attend, itemStat : *{attendList}">
+					<!-- Hidden form (Temporary Fix) -->
+					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].id}" autofocus="autofocus" />
+					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].bankName}" autofocus="autofocus" />
+					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].user}" autofocus="autofocus" />
+					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].event}" autofocus="autofocus" />
+
+						<td th:text="*{attendList[__${itemStat.index}__].user?.userName}"/></td>
+						<td th:text="*{attendList[__${itemStat.index}__].timeUploaded}"/></td>
+						<td th:text="*{attendList[__${itemStat.index}__].bankName}"/></td>
+						<td th:text="*{attendList[__${itemStat.index}__].status}"/></td>
 					</tr>
 				</tbody>
 			</table>

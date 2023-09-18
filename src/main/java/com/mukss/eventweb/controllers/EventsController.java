@@ -105,14 +105,34 @@ public class EventsController {
 		String imageString = Base64.getEncoder().encodeToString(event.getData());
 		
 		AttendsDTO attendsForm = new AttendsDTO();
-		attendsForm.setAttendList(event.getAttends());
+		AttendsDTO ownatt = new AttendsDTO();
+		List<Attend> attlist = event.getAttends();
+		attendsForm.setAttendList(attlist);
+		
+		// set author info and time info here
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = null;
+        if (principal instanceof CustomUserDetails) {
+            user = ((CustomUserDetails) principal).getUser();
+        }
 
 		// attend 추가		
 		model.addAttribute("event", event);
 		model.addAttribute("eventImage", imageString);
 		model.addAttribute("imageFileType", event.getImageFileType());
 		
+		List<Attend> flist = new ArrayList<Attend>();
+		if (user != null) {
+			for (int i=0; i < attlist.size(); i++) {
+				if (attlist.get(i).getUser().getId() == user.getId()) {
+					flist.add(attlist.get(i));
+				}
+			}
+		}
+		ownatt.setAttendList(flist);
+		
 		model.addAttribute("attendsForm", attendsForm);
+		model.addAttribute("ownatt", ownatt);
 		
 		// 'eattend' 객체 추가
 		if (!model.containsAttribute("eattend")) {
