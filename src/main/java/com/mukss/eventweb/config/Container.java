@@ -13,7 +13,7 @@ public class Container implements WebServerFactoryCustomizer<ConfigurableServlet
 
 	private final static Logger log = LoggerFactory.getLogger(Container.class);
 	private final static String PORT_ENV = "MANCHESTER_INSIDE_PORT";
-	private static int DEFAULT_PORT = 8080;
+	private static int DEFAULT_PORT = 10000;
 
 	@Override
 	public void customize(ConfigurableServletWebServerFactory factory) {
