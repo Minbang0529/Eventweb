@@ -103,10 +103,10 @@ public class MembershipController {
 	
 	@PostMapping(value="/update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public String updateMemberships(Model model, @RequestBody @Valid @ModelAttribute MembershipsDTO membershipsDTO, RedirectAttributes redirectAttrs) {
-		Role memberRole = roleService.findByname("USER").get();
+		Role memberRole = roleService.findByname("MEMBER").get();
 		if(memberRole == null) {
 			memberRole = new Role();
-			memberRole.setName("USER");
+			memberRole.setName("MEMBER");
 			roleService.save(memberRole);
 		}
 		Role userRole = roleService.findByname("USER").get();

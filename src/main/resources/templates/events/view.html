@@ -204,7 +204,7 @@
 		<!-- Attend Form -->
 		<h1><i class="fas fa-user-plus"></i> Attend Event</h1>
 		
-		<form sec:authorize="hasAnyAuthority('USER')" action="#" th:action="@{/attends?(eventId=${event.id})}" th:object="${eattend}" method="post">			
+		<form sec:authorize="hasAnyAuthority('MEMBER')" action="#" th:action="@{/attends?(eventId=${event.id})}" th:object="${eattend}" method="post">			
 	      	<div class="form-group">
 	      	<!-- Hidden form that stores id -->
 	      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
