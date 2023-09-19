@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/default}">
+<head>
+  <title>Home</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    .jumbotron {
+      background-color: #663399;
+      color: #fff;
+      padding: 30px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    .jumbotron h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    hr.my-4 {
+      border-color: #fff;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 18px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    ul li a {
+      color: #663399;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    ul li a:hover {
+      color: #512b85;
+    }
+    
+  </style>
+</head>
+<body>
+  <div layout:fragment="content">
+    <div class="jumbotron">
+      <h1 class="display-4">Manchester University Korean Student Society Website</h1>
+      <p class="lead">Registration for events and membership</p>
+      <hr class="my-4">
+      <ul>
+        <li><a href="/events" style="color: #fff;">Events</a></li>
+      </ul>
+      <ul>
+      	<li><a href="/membership/list" style="color: #fff;">Members list</a></li>
+      </ul>
+      <ul sec:authorize="hasAnyAuthority('ADMIN')">
+      	<li><a href="/membership/index" style="color: #fff;">Membership request</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
