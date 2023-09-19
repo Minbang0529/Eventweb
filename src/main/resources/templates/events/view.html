@@ -241,8 +241,8 @@
 	      	<div class="form-group">
 	      	<!-- Hidden form that stores id -->
 	      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
-		        <label for="name">Bank Name:</label>
-		        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter bankname..." autofocus="autofocus"></textarea>
+		        <label for="name">Phone number:</label>
+		        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter phone number..." autofocus="autofocus"></textarea>
 		        <p class="text-danger" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">errors</p>
 	      	</div>
       	<button class="btn btn-primary mb-2" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
