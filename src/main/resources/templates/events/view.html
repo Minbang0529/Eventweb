@@ -130,23 +130,22 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<p>This is where event details should appear.</p>
 		<hr>
 
 		<h1><i class="fas fa-bolt"></i> Title</h1>
-		<p style="width: 80%; word-wrap: break-word;" class="" th:text="${event.title}">Event TITLE</p>
+		<p style="font-size: 20px; text-align: center;" class="" th:text="${event.title}">Event TITLE</p>
 		<hr>
 		
 		<h1><i class="fas fa-calendar"></i> Author</h1>
-		<p th:text="${event.user.userName}">Author Username</p>
+		<p style="font-size: 20px; text-align: center;" th:text="${event.user.userName}">Author Username</p>
 		<hr>
 		  
 		<h1><i class="fas fa-calendar"></i> Content</h1>
-		<p th:text="${event.content}">event Content</p>
+		<p style="font-size: 20px; text-align: center;" th:text="${event.content}">event Content</p>
 		<hr>
 		
 		<h1>Image</h1>
-		<img th:src="${'data:'+ imageFileType +';charset=utf-8;base64,'+ eventImage }" alt="">
+		<img style="display: block; margin: 0 auto;" th:src="${'data:'+ imageFileType +';charset=utf-8;base64,'+ eventImage }" alt="">
 		<hr>
 
 		<!-- Update form button -->
@@ -173,8 +172,8 @@
 				<thead>
 					<tr>
 						<th>Author</th>
-						<th>UploadTime</th>
-						<th>Bank Name</th>
+						<th>Upload Time</th>
+						<th>Phone Number</th>
 						<th>Status</th>
 					</tr>
 				</thead>
@@ -211,8 +210,8 @@
 				<thead>
 					<tr>
 						<th>Author</th>
-						<th>UploadTime</th>
-						<th>Bank Name</th>
+						<th>Upload Time</th>
+						<th>Phone Number</th>
 						<th>Status</th>
 					</tr>
 				</thead>
@@ -241,7 +240,7 @@
 	      	<div class="form-group">
 	      	<!-- Hidden form that stores id -->
 	      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
-		        <label for="name">Phone number:</label>
+		        <label for="name">Phone Number:</label>
 		        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter phone number..." autofocus="autofocus"></textarea>
 		        <p class="text-danger" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">errors</p>
 	      	</div>
