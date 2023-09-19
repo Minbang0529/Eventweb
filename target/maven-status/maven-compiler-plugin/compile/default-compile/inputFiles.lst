@@ -4,7 +4,6 @@ C:\Users\saimi\git\Eventweb\src\main\java\com\mukss\eventweb\services\EventServi
 C:\Users\saimi\git\Eventweb\src\main\java\com\mukss\eventweb\assemblers\UserModelAssembler.java
 C:\Users\saimi\git\Eventweb\src\main\java\com\mukss\eventweb\config\ContentNegotiation.java
 C:\Users\saimi\git\Eventweb\src\main\java\com\mukss\eventweb\repositories\EventRepository.java
-C:\Users\saimi\git\Eventweb\src\main\java\com\mukss\eventweb\config\initialLoader\InitialDataLoader.java
 C:\Users\saimi\git\Eventweb\src\main\java\com\mukss\eventweb\entities\Attend.java
 C:\Users\saimi\git\Eventweb\src\main\java\com\mukss\eventweb\exceptions\EventNotFoundException.java
 C:\Users\saimi\git\Eventweb\src\main\java\com\mukss\eventweb\controllers\EventsController.java
