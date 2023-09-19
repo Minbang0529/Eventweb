@@ -91,14 +91,34 @@ public class MembershipController {
 
 		MembershipsDTO membershipsDTO = new MembershipsDTO();
 		membershipsDTO.setUsersList(waitingMembers);
+		
+		
+		Iterable<User> ulist = userService.findAll();
+		List<User> memlist = new ArrayList<User>();
+		List<User> rejlist = new ArrayList<User>();
+		for (User u : ulist) {
+			if (u.getMembership().contains("firm")) {
+				memlist.add(u);
+			}
+			if (u.getMembership().contains("jected")) {
+				rejlist.add(u);
+			}
+		}
+		
+		MembershipsDTO confirmedDTO = new MembershipsDTO();
+		confirmedDTO.setUsersList(memlist);
+		
+		MembershipsDTO rejDTO = new MembershipsDTO();
+		rejDTO.setUsersList(rejlist);
 
+		model.addAttribute("rejDTO", rejDTO);
+		model.addAttribute("confirmedDTO", confirmedDTO);
 		model.addAttribute("membershipsDTO", membershipsDTO);
 		return "membership/index";
 	}
 	
 	@GetMapping("/list")
 	public String getMemberlist(Model model) {
-		List<User> confirmedMembers = userService.findBymembership("Confirmed");
 
 		Iterable<User> ulist = userService.findAll();
 		List<User> memlist = new ArrayList<User>();
@@ -112,7 +132,7 @@ public class MembershipController {
 		membershipsDTO.setUsersList(memlist);
 
 		model.addAttribute("membershipsDTO", membershipsDTO);
-		return "membership/index";
+		return "membership/list";
 	}
 	
 	@PostMapping(value="/update", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
