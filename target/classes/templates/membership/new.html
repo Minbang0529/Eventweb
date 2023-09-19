@@ -9,7 +9,7 @@
   </head>
   
   <body>
-    <div layout:fragment="content">
+    <div sec:authorize="hasAnyAuthority('USER')" layout:fragment="content">
       <form th:action="@{/membership}"  action="#" method="post" th:object="${membershipRegistrationEntity}">
         <h1>Membership Registration</h1>
 
@@ -96,6 +96,13 @@
         >
 
       </form>
+    </div>
+     <div sec:authorize="hasAnyAuthority('MEMBER')" layout:fragment="content">
+	    <h3> You seem to already have a membership! </h3>
+	    <h3> Please log out and log back in again to update your status. </h3>
+	    <a class="btn btn-warning" role="button" href="/"
+          ><i class="fas fa-arrow-left" aria-hidden="true"></i> Back</a
+        >
     </div>
   </body>
   
