@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mukss.eventweb.config.userdetails.CustomUserDetails;
 import com.mukss.eventweb.entities.Attend;
 import com.mukss.eventweb.entities.Membership;
 import com.mukss.eventweb.entities.MembershipsDTO;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.validation.BindingResult;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -46,13 +48,25 @@ public class MembershipController {
 	@GetMapping
 	public String showRegistrationForm(Model model, @RequestParam(value = "userName", required = true) String username) {
 		
-		Membership membershipRegistrationEntity = new Membership();
-		User user = userService.findByName(username).orElseThrow(()-> new UserNotFoundException(username));
+		// Whether the person is logged in or not, or the username matches
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = null;
+		if (principal instanceof CustomUserDetails) {
+			user = ((CustomUserDetails)principal).getUser();
+		}
 		
-		membershipRegistrationEntity.setUserName(user.getUserName());
-		membershipRegistrationEntity.setFirstName(user.getFirstName());
-		membershipRegistrationEntity.setLastName(user.getLastName());
-		membershipRegistrationEntity.setMembershipCheckbox(user.getMembership().equals("Waiting") ? true : false);
+		
+		if (user == null || !user.getUserName().equals(username)) {
+			return "redirect:/";
+		}
+		
+		Membership membershipRegistrationEntity = new Membership();
+		User userRetrieved = userService.findByName(username).orElseThrow(()-> new UserNotFoundException(username));
+		
+		membershipRegistrationEntity.setUserName(userRetrieved.getUserName());
+		membershipRegistrationEntity.setFirstName(userRetrieved.getFirstName());
+		membershipRegistrationEntity.setLastName(userRetrieved.getLastName());
+		membershipRegistrationEntity.setMembershipCheckbox(userRetrieved.getMembership().equals("Waiting") ? true : false);
 
 	    model.addAttribute("membershipRegistrationEntity", membershipRegistrationEntity);
 	    return "membership/new";
