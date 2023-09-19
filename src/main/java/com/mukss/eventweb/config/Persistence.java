@@ -39,7 +39,7 @@ public class Persistence {
 
 	@Bean
 	public DataSource dataSource() {
-		String dbUrl = "jdbc:postgresql://dpg-ck4scsd8ggls739be9m0-a/mukss:5432";
+		String dbUrl = "jdbc:postgresql://dpg-ck4scsd8ggls739be9m0-a:5432/mukss";
 
 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
