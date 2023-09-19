@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- comment for dbtest -->
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
@@ -56,5 +57,15 @@
   <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/webjars/popper.js/umd/popper.min.js"></script>
   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  
+    <script>
+  $(document).ready(function () {
+    // Navbar를 초기화합니다.
+    $('.navbar-toggler').on('click', function () {
+      $('.navbar-collapse').collapse('toggle');
+    });
+  });
+</script>
+
 </body>
 </html>
