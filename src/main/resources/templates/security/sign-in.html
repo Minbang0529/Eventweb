@@ -77,8 +77,8 @@
     </div>
     <form th:action="@{/sign-in}" method="post">
       <div class="form-group" th:classappend="${param.error}? has-error">
-        <label for="username">User name:</label>
-        <input class="form-control" type="text" name="username" id="username" placeholder="Please enter the user name" autofocus="autofocus" />
+        <label for="username">User name (Student ID):</label>
+        <input class="form-control" type="text" name="username" id="username" placeholder="Please enter the user name (Student ID)" autofocus="autofocus" />
       </div>
       <div class="form-group" th:classappend="${param.error}? has-error">
         <label for="password">Password:</label>

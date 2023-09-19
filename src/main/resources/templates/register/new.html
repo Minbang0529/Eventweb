@@ -94,21 +94,24 @@
         <input class="form-control" type="text" name = "lastName" id = "lastName" placeholder="Please enter the last name" autofocus="autofocus" />
         <p class = "text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">errors</p>
      </div>
-     <div class = "form-group" th:classappend = "${#fields.hasErrors('userName')}? has-error">
-        <label for ="userName">User name</label>
-        <input class="form-control" type="text" name = "userName" id = "userName" placeholder="Please enter the user name" autofocus="autofocus" />
-        <p class = "text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">errors</p>
-     </div>
-     <div class = "form-group" th:classappend = "${#fields.hasErrors('password')}? has-error">
-        <label for ="password">password (student id)</label>
-        <input class="form-control" type="text" name = "password" id = "password" placeholder="Please enter the password" autofocus="autofocus" />
-        <p class = "text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">errors</p>
-     </div>
-    <div class = "form-group" th:classappend = "${#fields.hasErrors('email')}? has-error">
-        <label for ="email">email</label>
-        <input class="form-control" type="text" name = "email" id = "email" placeholder="Please enter the student email" autofocus="autofocus" />
-        <p class = "text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">errors</p>
-     </div>
+     <div class="form-group" th:classappend="${#fields.hasErrors('userName')}? has-error">
+	    <label for="userName">User name (Student ID)</label>
+	    <input class="form-control" type="text" name="userName" id="userName" placeholder="Please enter the user name (Student ID)" autofocus="autofocus" 
+	           th:field="*{userName}" pattern="[0-9]{8}" required="required" />
+	    <p class="text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">errors</p>
+	</div>
+	<div class="form-group" th:classappend="${#fields.hasErrors('password')}? has-error">
+	    <label for="password">Password</label>
+	    <input class="form-control" type="password" name="password" id="password" placeholder="Please enter the password" autofocus="autofocus" 
+	           th:field="*{password}" minlength="8" maxlength="16" required="required" />
+	    <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">errors</p>
+	</div>
+	<div class="form-group" th:classappend="${#fields.hasErrors('email')}? has-error">
+	    <label for="email">Email</label>
+	    <input class="form-control" type="email" name="email" id="email" placeholder="Please enter the student email" autofocus="autofocus" 
+	           th:field="*{email}" required="required" />
+	    <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">errors</p>
+	</div>
     
     
     <p>By creating an account you agree to our Terms & Privacy.</p>
