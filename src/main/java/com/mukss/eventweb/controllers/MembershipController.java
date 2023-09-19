@@ -151,13 +151,20 @@ public class MembershipController {
 		}
 
 		for (User u: membershipsDTO.getUsersList()) {
-			Set<Role> roles = new HashSet<>();
+			Set<Role> roles = u.getRoles();
 			switch(u.getMembership()) {
 				case "Confirmed":
+					roles.remove(userRole);
 					roles.add(memberRole);
 					u.setRoles(roles);
 					break;
+				case "Waiting":
+					roles.remove(memberRole);
+					roles.add(userRole);
+					u.setRoles(roles);
+					break;
 				case "Rejected":
+					roles.remove(memberRole);
 					roles.add(userRole);
 					u.setRoles(roles);
 					break;
