@@ -27,6 +27,7 @@ com\mukss\eventweb\entities\CourseComment.class
 com\mukss\eventweb\entities\Course.class
 com\mukss\eventweb\Eventweb.class
 com\mukss\eventweb\repositories\RoleRepository.class
+com\mukss\eventweb\config\initialLoader\InitialDataLoader.class
 com\mukss\eventweb\services\EventService.class
 com\mukss\eventweb\config\Persistence.class
 com\mukss\eventweb\controllers\AttendController.class
