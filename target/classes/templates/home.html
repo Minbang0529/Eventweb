@@ -51,6 +51,31 @@
       color: #512b85;
     }
     
+    .social-links {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .social-links a {
+      margin-right: 20px;
+      color: #663399;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .social-links a:last-child {
+      margin-right: 0;
+    }
+
+    .social-links a:hover {
+      color: #512b85;
+    }
+    
   </style>
 </head>
 <body>
@@ -69,6 +94,14 @@
       	<li><a href="/membership/index" style="color: #fff;">Membership request</a></li>
       </ul>
     </div>
+   <div style="position: fixed; bottom: 40px; left: 49%; transform: translateX(-50%);">
+        <img th:src="@{/images/mukss.png}" alt="Your Logo" width="400" height="130">
+     </div>
+     
+   <div class="social-links">
+    <a href="https://www.instagram.com/mukss_official" target="_blank">Instagram</a>
+    <a href="https://www.fatsoma.com/p/mukss2324" target="_blank">Fatsoma</a>
   </div>
+ </div> 
 </body>
 </html>
