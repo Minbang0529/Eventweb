@@ -24,7 +24,7 @@
   </head>
   
   <body>
-    <div layout:fragment="content">
+    <div sec:authorize="hasAnyAuthority('USER')" layout:fragment="content">
       <form th:action="@{/membership}"  action="#" method="post" th:object="${membershipRegistrationEntity}">
         <h1>Membership Registration</h1>
 
@@ -65,14 +65,7 @@
             th:text="*{lastName}"
           ></span>
         </div>
-	
-	</div>
-	<div layout:fragment="content">
-	
-	
-	
-	
-	
+
         <div class="form-group mb-3">
           <label for="userName">Username (Student ID):</label>
           <input
@@ -108,7 +101,7 @@
 	  	<span class="highlighted-text">
 	    	Name: Been Kwon | Sort Code: 04-00-03 | Account Number: 42437050
 	    </span>
-		</div>>
+		</div>
 
         <button class="btn btn-primary" type="submit">
           <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Submit
