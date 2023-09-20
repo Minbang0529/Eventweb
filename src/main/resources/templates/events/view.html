@@ -156,7 +156,6 @@
         <form sec:authorize="hasAnyAuthority('ADMIN')" th:action="@{/events/{num}(num=${event.id})}" th:method="delete">
       		<button type="submit" class="btn btn-danger mb-2"><i class="fas fa-trash" aria-hidden="true"></i> Delete event</button>
    		</form>
-        <hr>
         
         <!-- View attendees button -->
 		<form sec:authorize="hasAnyAuthority('ADMIN')" th:action="@{/events/attendee/{num}(num=${event.id})}" th:method="get">
