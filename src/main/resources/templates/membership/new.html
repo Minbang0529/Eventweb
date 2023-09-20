@@ -24,10 +24,7 @@
   </head>
   
   <body>
-  <div layout:fragment="content">
-  <h1>Membership Registration111</h1>
-  </div>
-    <div sec:authorize="hasAnyAuthority('USER', 'ADMIN')" layout:fragment="content">
+    <div layout:fragment="content">
     <h1>Membership Registration222</h1>
       <form th:action="@{/membership}"  action="#" method="post" th:object="${membershipRegistrationEntity}">
         <h1>Membership Registration333</h1>
@@ -116,13 +113,7 @@
 
       </form>
     </div>
-     <div sec:authorize="hasAnyAuthority('MEMBER')" layout:fragment="content">
-	    <h3> You seem to already have a membership! </h3>
-	    <h3> Please log out and log back in again to update your status. </h3>
-	    <a class="btn btn-warning" role="button" href="/"
-          ><i class="fas fa-arrow-left" aria-hidden="true"></i> Back</a
-        >
-    </div>
+
   </body>
   
 </html>
