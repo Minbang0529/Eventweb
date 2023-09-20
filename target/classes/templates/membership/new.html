@@ -24,7 +24,7 @@
   </head>
   
   <body>
-    <div sec:authorize="hasAnyAuthority('USER')" layout:fragment="content">
+    <div layout:fragment="content">
       <form th:action="@{/membership}"  action="#" method="post" th:object="${membershipRegistrationEntity}">
         <h1>Membership Registration</h1>
 
