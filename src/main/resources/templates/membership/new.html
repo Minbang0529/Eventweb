@@ -24,9 +24,11 @@
   </head>
   
   <body>
-    <div sec:authorize="hasAnyAuthority('USER')" layout:fragment="content">
+  <h1>Membership Registration111</h1>
+    <div sec:authorize="hasAnyAuthority('USER', 'ADMIN')" layout:fragment="content">
+    <h1>Membership Registration222</h1>
       <form th:action="@{/membership}"  action="#" method="post" th:object="${membershipRegistrationEntity}">
-        <h1>Membership Registration</h1>
+        <h1>Membership Registration333</h1>
 
         <div class="form-group mb-3">
           <label for="firstName">First Name:</label>
