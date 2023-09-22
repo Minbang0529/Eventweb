@@ -181,8 +181,6 @@
 				<tbody>
 					<tr th:each="attend, itemStat : *{attendList}">
 					<!-- Hidden form (Temporary Fix) -->
-					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].firstName}" autofocus="autofocus" />
-					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].lastName}" autofocus="autofocus" />
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].id}" autofocus="autofocus" />
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].bankName}" autofocus="autofocus" />
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].user}" autofocus="autofocus" />
