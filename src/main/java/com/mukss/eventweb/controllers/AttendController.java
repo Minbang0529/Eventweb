@@ -111,7 +111,7 @@ public class AttendController {
     public String editAttends(@RequestBody @Valid  @ModelAttribute AttendsDTO attendsForm, BindingResult errors,
     		@RequestParam(value = "eventId", required = true) String eventId, RedirectAttributes redirectAttrs) { 
     	for(Attend a: attendsForm.getAttendList()) {
-    		a.setTimeUploaded(LocalDateTime.now());
+//    		a.setTimeUploaded(LocalDateTime.now());
     		attendService.save(a);
     	}
     	
