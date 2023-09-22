@@ -31,7 +31,7 @@
         <div class="navbar-text">
           <a sec:authorize="hasAnyAuthority('USER')" class="btn btn-primary navbar-btn" role="button" th:href="@{/membership?(userName=${#authentication.name})}">
             Membership Sign-Up
-          </a><label sec:authorize="hasAnyAuthority('USER')">  |&nbsp;&nbsp;</label>
+          </a><label sec:authorize="hasAnyAuthority('USER')">  &nbsp;|&nbsp;&nbsp;</label>
           <i class="fas fa-user" aria-hidden="true"></i> Signed in as <span sec:authentication="name"></span> |&nbsp;&nbsp;
           <button type="submit" class="btn btn-warning navbar-btn"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sign out</button>
         </div>
