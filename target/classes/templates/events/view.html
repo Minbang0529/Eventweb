@@ -170,7 +170,9 @@
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>Author</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Student ID</th>
 						<th>Upload Time</th>
 						<th>Phone Number</th>
 						<th>Status</th>
@@ -179,11 +181,15 @@
 				<tbody>
 					<tr th:each="attend, itemStat : *{attendList}">
 					<!-- Hidden form (Temporary Fix) -->
+					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].firstName}" autofocus="autofocus" />
+					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].lastName}" autofocus="autofocus" />
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].id}" autofocus="autofocus" />
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].bankName}" autofocus="autofocus" />
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].user}" autofocus="autofocus" />
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].event}" autofocus="autofocus" />
 
+						<td th:text="*{attendList[__${itemStat.index}__].user?.firstName}"/></td>
+						<td th:text="*{attendList[__${itemStat.index}__].user?.lastName}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].user?.userName}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].timeUploaded}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].bankName}"/></td>
@@ -208,7 +214,9 @@
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>Author</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Student ID</th>
 						<th>Upload Time</th>
 						<th>Phone Number</th>
 						<th>Status</th>
@@ -221,7 +229,9 @@
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].bankName}" autofocus="autofocus" />
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].user}" autofocus="autofocus" />
 					<input class="form-control" type="hidden" id="id" th:field="*{attendList[__${itemStat.index}__].event}" autofocus="autofocus" />
-
+						
+						<td th:text="*{attendList[__${itemStat.index}__].user?.firstName}"/></td>
+						<td th:text="*{attendList[__${itemStat.index}__].user?.lastName}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].user?.userName}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].timeUploaded}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].bankName}"/></td>
