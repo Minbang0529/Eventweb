@@ -174,7 +174,7 @@
 						<th>Last Name</th>
 						<th>Student ID</th>
 						<th>Upload Time</th>
-						<th>Phone Number</th>
+						<th>Contact</th>
 						<th>Status</th>
 					</tr>
 				</thead>
@@ -216,7 +216,7 @@
 						<th>Last Name</th>
 						<th>Student ID</th>
 						<th>Upload Time</th>
-						<th>Phone Number</th>
+						<th>Contact</th>
 						<th>Status</th>
 					</tr>
 				</thead>
@@ -247,8 +247,8 @@
 	      	<div class="form-group">
 	      	<!-- Hidden form that stores id -->
 	      	<input class="form-control" type="hidden" id="id" th:field="*{id}" autofocus="autofocus" />
-		        <label for="name">Phone Number:</label>
-		        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter phone number..." autofocus="autofocus"></textarea>
+		        <label for="name">Contact (Phone number/Kakaotalk):</label>
+		        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter contact information..." autofocus="autofocus"></textarea>
 		        <p class="text-danger" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">errors</p>
 	      	</div>
       	<button class="btn btn-primary mb-2" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
