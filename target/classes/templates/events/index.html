@@ -43,6 +43,22 @@
       background-color: #f0f0f0;
       cursor: pointer;
     }
+    
+    .greet-btn {
+      background-color: #663399;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: block;
+    }
+
+    .greet-btn:hover {
+      background-color: #512b85;
+    }
 
   </style>
 </head>
@@ -100,7 +116,7 @@
     </div>
 
     <p sec:authorize="hasAnyAuthority('ADMIN')">
-      <a class="btn btn-primary" role="button" href="/events/new"><i class="fas fa-plus" aria-hidden="true"></i> Add a new greeting</a>
+      <a class="greet-btn" role="button" href="/events/new"><i class="fas fa-plus" aria-hidden="true"></i> Add a new greeting</a>
     </p>
   </div>
 </body>
