@@ -189,7 +189,7 @@
 						<td th:text="*{attendList[__${itemStat.index}__].user?.firstName}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].user?.lastName}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].user?.userName}"/></td>
-						<td th:text="*{attendList[__${itemStat.index}__].timeUploaded}"/></td>
+						<td th:text="*{attendList[__${itemStat.index}__].timeUploaded.format(standardDate, 'yyyy-MM-dd HH:mm')}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].bankName}"/></td>
 						<td>
 							<select th:field="*{attendList[__${itemStat.index}__].status}">
@@ -231,7 +231,7 @@
 						<td th:text="*{attendList[__${itemStat.index}__].user?.firstName}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].user?.lastName}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].user?.userName}"/></td>
-						<td th:text="*{attendList[__${itemStat.index}__].timeUploaded}"/></td>
+						<td th:text="*{attendList[__${itemStat.index}__].timeUploaded.format(standardDate, 'yyyy-MM-dd HH:mm')}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].bankName}"/></td>
 						<td th:text="*{attendList[__${itemStat.index}__].status}"/></td>
 					</tr>
