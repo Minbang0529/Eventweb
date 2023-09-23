@@ -32,13 +32,37 @@
           <a sec:authorize="hasAnyAuthority('USER')" class="btn btn-primary navbar-btn" role="button" th:href="@{/membership?(userName=${#authentication.name})}">
             Membership Sign-Up
           </a><label sec:authorize="hasAnyAuthority('USER')"> &nbsp;&nbsp;|&nbsp;</label>
-          <i class="fas fa-user" aria-hidden="true"></i> Signed in as <span sec:authentication="name"></span> |&nbsp;
+          <i class="fas fa-user" aria-hidden="true"></i> Signed in as
+          <button type="button" class="profile_btn" data-toggle="modal" data-target="#pop_up">
+          	<span sec:authentication="name"></span>
+          </button> |&nbsp;
           <button type="submit" class="btn btn-warning navbar-btn"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sign out</button>
         </div>
       </form>
     </div>
     </div>
   </nav>
+  
+  <!-- pop up box -->
+  
+  <div class="modal fade" id="pop_up">
+  	<div class="modal-dialog">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<button type="button" class="close" data-dismiss="modal">&times;</button>
+  				<p>First Name: <p><span sec:authentication="name"></span>
+  			</div>
+  			<div class="modal-body">
+  				<p>Last Name: </p><span sec:authentication="name"></span>
+  			</div>
+  			<div class="modal-footer">
+  				<p>Membership Status: </p><span sec:authentication="name"></span>
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  
 
   <div class="container mt-lg-5">
     <div class="alert alert-success alert-dismissible" role="alert" th:if="${ok_message}">
