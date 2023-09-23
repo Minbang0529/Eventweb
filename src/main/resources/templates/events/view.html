@@ -57,7 +57,8 @@
       color: #ff0000;
     }
 
-    .btn-primary,
+    .save-btn,
+    .list-btn,
     .btn-danger {
       background-color: #663399;
       color: #fff;
@@ -73,7 +74,8 @@
       background-color: #d9534f;
     }
 
-    .btn-primary:hover,
+    .save-btn:hover,
+    .list-btn:hover,
     .btn-danger:hover {
       background-color: #512b85;
     }
@@ -251,10 +253,10 @@
 		        <textarea class="form-control my-3" type="text" id="bankName" th:field="*{bankName}" rows="2" placeholder="Enter contact information..." autofocus="autofocus"></textarea>
 		        <p class="text-danger" th:if="${#fields.hasErrors('bankName')}" th:errors="*{bankName}">errors</p>
 	      	</div>
-      	<button class="btn btn-primary mb-2" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
+      	<button class="btn save-btn mb-2" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
     	</form>
 		
-		<a class="btn btn-primary mb-2" role="button" href="/events"><i class="fas fa-home" aria-hidden="true"></i> Back to list</a>
+		<a class="btn list-btn mb-2" role="button" href="/events"><i class="fas fa-home" aria-hidden="true"></i> Back to list</a>
 	</div>  
 </body>
 </html>
