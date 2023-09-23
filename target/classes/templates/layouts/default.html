@@ -33,7 +33,7 @@
             Membership Sign-Up
           </a><label sec:authorize="hasAnyAuthority('USER')"> &nbsp;&nbsp;|&nbsp;</label>
           <i class="fas fa-user" aria-hidden="true"></i> Signed in as
-          <button type="button" class="profile_btn" data-toggle="modal" data-target="#popup">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popup">
           	<span sec:authentication="name"></span>
           </button> |&nbsp;
           <button type="submit" class="btn btn-warning navbar-btn"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sign out</button>
