@@ -82,8 +82,6 @@
           <td>
             <a th:href="@{'/events/' + ${e.id}}" th:text="${e.title}">Event Title</a>
           </td>
-          <td th:text="${{e.user?.userName}}">Event Author</td>
-          <td th:text="*{#temporals.format(e?.timeUploaded, 'yyyy-MM-dd HH:mm:ss')}"/></td>
           <td th:text="${{e?.date}}">2000-01-01</td>
           <td th:text="${{e?.time}}">00:00 GMT+1</td>
 
@@ -107,8 +105,6 @@
 	          <td>
 	            <a th:href="@{'/events/' + ${e.id}}" th:text="${e.title}">Event Title</a>
 	          </td>
-	          <td th:text="${{e.user?.userName}}">Event Author</td>
-	          <td th:text="*{#temporals.format(e?.timeUploaded, 'yyyy-MM-dd HH:mm:ss')}"/></td>
 	          <td th:text="${{e?.date}}">2000-01-01</td>
 	          <td th:text="${{e?.time}}">00:00 GMT+1</td>
 	

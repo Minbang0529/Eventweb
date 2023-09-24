@@ -29,6 +29,11 @@
       font-family: Arial, sans-serif;
       color: #333;
     }
+    
+    img {
+    max-width: 100%;
+    max-height: 100%;
+	}
 
     h1 {
       text-align: center;
@@ -124,23 +129,26 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<hr>
 
-		<h1><i class="fas fa-bolt"></i> Title</h1>
-		<p style="width: 80%; word-wrap: break-word;" class="" th:text="${event.title}">Event TITLE</p>
-		<hr>
-		
-		<h1><i class="fas fa-calendar"></i> Author</h1>
-		<p th:text="${event.user.userName}">Author Username</p>
+		<h1> Title</h1>
+		<p style="font-size: 20px; text-align: center;" class="" th:text="${event.title}">Event TITLE</p>
 		<hr>
 		  
-		<h1><i class="fas fa-calendar"></i> Content</h1>
-		<p th:text="${event.content}">event Content</p>
+		<h1><i class="fas fa-calendar"></i> Date</h1>
+		<p style="font-size: 20px; text-align: center;" class="" th:text="${event.date}">Event TITLE</p>
+		<hr>
+		
+		<h1><i class="fas fa-clock"></i> Time</h1>
+		<p style="font-size: 20px; text-align: center;" class="" th:text="${event.time}">Event TITLE</p>
 		<hr>
 		
 		<h1>Image</h1>
-		<img th:src="${'data:'+ imageFileType +';charset=utf-8;base64,'+ eventImage }" alt="">
+		<img style="display: block; margin: 0 auto;" th:src="${'data:'+ imageFileType +';charset=utf-8;base64,'+ eventImage }" alt="">
 		<hr>
+		
+		<h1>Content</h1>
+		<p style="font-size: 20px; text-align: left; white-space: pre-line" th:text="${event.content}">event Content</p>
+		<hr>	
 
 		<h3>Attend</h3>
 		<form action="#" th:action="@{/attends/editAttends?(eventId=${event.id})}" method="post" th:object="${attendsForm}">

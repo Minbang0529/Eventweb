@@ -52,6 +52,7 @@ public class Event {
 
 	
 	@NotEmpty
+	@Column(columnDefinition = "TEXT")
 	private String content;
 	
 	private String location;
