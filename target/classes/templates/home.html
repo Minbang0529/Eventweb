@@ -87,7 +87,7 @@
       <ul>
         <li><a href="/events" style="color: #fff;">Events</a></li>
       </ul>
-      <ul>
+      <ul sec:authorize="hasAnyAuthority('ADMIN')">
       	<li><a href="/membership/list" style="color: #fff;">Members list</a></li>
       </ul>
       <ul sec:authorize="hasAnyAuthority('ADMIN')">
