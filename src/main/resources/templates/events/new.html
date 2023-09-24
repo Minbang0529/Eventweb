@@ -41,7 +41,7 @@
       color: #ff0000;
     }
 
-    .btn-primary {
+    .save-btn {
       background-color: #663399;
       color: #fff;
       border: none;
@@ -52,11 +52,11 @@
       transition: background-color 0.3s;
     }
 
-    .btn-primary:hover {
+    .save-btn:hover {
       background-color: #512b85;
     }
 
-    .btn-warning {
+    .cancel-btn {
       background-color: #f0ad4e;
       color: #fff;
       border: none;
@@ -68,7 +68,7 @@
       margin-left: 10px;
     }
 
-    .btn-warning:hover {
+    .cancel-btn:hover {
       background-color: #d9534f;
     }
 
@@ -107,8 +107,8 @@
         <p class="text-danger" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">errors</p>
       </div>
       
-      <button class="btn btn-primary" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
-      <a class="btn btn-warning" role="button" href="/events"><i class="fas fa-ban" aria-hidden="true"></i> Cancel</a>
+      <button class="save-btn" type="submit"><i class="fas fa-bookmark" aria-hidden="true"></i> Save</button>
+      <a class="cancel-btn" role="button" href="/events"><i class="fas fa-ban" aria-hidden="true"></i> Cancel</a>
     </form>
   </div>
 </body>
