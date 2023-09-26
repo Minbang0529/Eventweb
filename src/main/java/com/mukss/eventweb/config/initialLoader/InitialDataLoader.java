@@ -62,7 +62,7 @@ public class InitialDataLoader {
 				user.setLastName("Mukss");
 				user.setUserName("19990921");
 				user.setPassword(this.passwordEncoder.encode("Mukss2024@"));
-				user.setEmail("Info.mukss@gmail.com");
+				user.setEmail("info.mukss@gmail.com");
 				user.setEnabled(true);
 				user.setMembership("Confirmed");
 				
