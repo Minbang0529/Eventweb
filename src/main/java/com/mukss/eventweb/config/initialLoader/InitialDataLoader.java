@@ -58,28 +58,15 @@ public class InitialDataLoader {
 				user.getRoles().add(r1);
 				user.getRoles().add(r2);
 				user.getRoles().add(r3);
-				user.setFirstName("Minsung");
-				user.setLastName("Kang");
-				// very cheeky, william
-				user.setUserName("prof-kang");
-				user.setPassword(this.passwordEncoder.encode("i-am-a-professor"));
-				user.setEmail("sample@email.com");
+				user.setFirstName("Mukss");
+				user.setLastName("Mukss");
+				user.setUserName("MUKSS");
+				user.setPassword(this.passwordEncoder.encode("Mukss2024@"));
+				user.setEmail("Info.mukss@gmail.com");
 				user.setEnabled(true);
-				user.setMembership("Waiting");
-				
-				User user2 = new User();
-				user2.getRoles().add(r3);
-				user2.setFirstName("william");
-				user2.setLastName("aung");
-				user2.setUserName("aaa");
-				user2.setPassword(this.passwordEncoder.encode("aaa"));
-				user2.setEmail("w.a@gmail.com");
-				user2.setEnabled(true);
-				user2.setMembership("Waiting");
-				
+				user.setMembership("Confirmed");
 				
 				userService.save(user);
-				userService.save(user2);
 			}
 			// populate db with categories
 			// TODO: Implement categories and initialize here
