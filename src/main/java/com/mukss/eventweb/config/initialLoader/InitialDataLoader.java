@@ -60,7 +60,7 @@ public class InitialDataLoader {
 				user.getRoles().add(r3);
 				user.setFirstName("Mukss");
 				user.setLastName("Mukss");
-				user.setUserName("MUKSS");
+				user.setUserName("19990921");
 				user.setPassword(this.passwordEncoder.encode("Mukss2024@"));
 				user.setEmail("Info.mukss@gmail.com");
 				user.setEnabled(true);
