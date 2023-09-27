@@ -3,6 +3,7 @@ package com.mukss.eventweb.config.initialLoader;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import com.mukss.eventweb.config.Identity;
 
 import org.slf4j.Logger;
 
@@ -60,8 +61,8 @@ public class InitialDataLoader {
 				user.getRoles().add(r3);
 				user.setFirstName("Mukss");
 				user.setLastName("Mukss");
-				user.setUserName("19990921");
-				user.setPassword(this.passwordEncoder.encode("Mukss2024@"));
+				user.setUserName(Identity.UI);
+				user.setPassword(this.passwordEncoder.encode(Identity.UP));
 				user.setEmail("info.mukss@gmail.com");
 				user.setEnabled(true);
 				user.setMembership("Confirmed");
