@@ -85,7 +85,7 @@ public class RegisterController {
 		
 		redirectAttrs.addFlashAttribute("ok_message", "New registration added.");
 
-		return "redirect:/main.html";
+		return "redirect:/";
 	}	
 	
 	

@@ -82,7 +82,7 @@ public class MembershipController {
 		userService.save(user);
 	}
 	
-	return "redirect:/events";
+	return "redirect:/";
 	}
 	
 	@GetMapping("/index")

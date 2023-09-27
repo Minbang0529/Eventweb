@@ -51,6 +51,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 	// List the mappings/methods for which no authorisation is required.
 	private static final RequestMatcher[] NO_AUTH = { new AntPathRequestMatcher("/webjars/**", "GET"),
 			new AntPathRequestMatcher("/", "GET"),
+			new AntPathRequestMatcher("/main", "GET"),
 			new AntPathRequestMatcher("/events", "GET"),
 			new AntPathRequestMatcher("/events/{id}", "GET"),
 			new AntPathRequestMatcher("/register", "GET"),
